@@ -122,7 +122,6 @@ public class TrackerHandler : MonoBehaviour
 
         }
     }
-
     public bool updateBothPeople(BackgroundData trackerFrameData) {
         if ((int)trackerFrameData.NumOfBodies == 1){
             Body skeleton = trackerFrameData.Bodies[0];
