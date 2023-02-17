@@ -25,13 +25,15 @@ public class main : MonoBehaviour
 
     public BackgroundData m_lastFrameData = new BackgroundData();
 
-    private int points;
+    public int points;
 
     public Text problemText;
     public UnityEngine.UI.Image problemImage;
     public Material problemMaterial;
     public Material reset;
     public Text pointsText;
+
+    public Text syncText;
 
 
     void Start()
@@ -46,13 +48,13 @@ public class main : MonoBehaviour
         
         // }
 
-        pointsText.text = "Points: 0";
-        points = 0;
+        // points = 0;
+        pointsText.text = "Points: " + points;
 
         // StartCoroutine(makePoloAppear());
 
         StartCoroutine(WaitTwoCameraCalibrate());
-        StartCoroutine(WaitCameraMarcoCalibrate());
+        // StartCoroutine(WaitCameraMarcoCalibrate());
         
     }
 
@@ -125,9 +127,7 @@ public class main : MonoBehaviour
         }
 
         if (success) {
-            Debug.Log("Calibrating Cameras");
-
-            
+            Debug.Log("Calibrating Cameras");  
             Vector3 translation = new Vector3(0,0,0);
             Vector3 rotation = new UnityEngine.Vector3(0,0,0);
             for (var i = 0; i < noIterations; i++){
@@ -155,42 +155,46 @@ public class main : MonoBehaviour
 */
 
     
+    public void Syncronisation() {
+        StartCoroutine(WaitCameraMarcoCalibrate(syncText));
+    }
 
-    IEnumerator<WaitForSeconds> WaitCameraMarcoCalibrate() {
+    public IEnumerator<WaitForSeconds> WaitCameraMarcoCalibrate(Text t) {
         Debug.Log("Starting Marco Calibration");
         float timer = 0.5f;
         bool success = true;
-        var marco = GameObject.Find("TestMarco(Clone)");
+        var marco = GameObject.Find("Marco(Clone)");
         var parent = GameObject.Find("MarcoContainer");
         
         while ((!m_skeletalTrackingProvider.IsRunning || marco == null) && success){
             yield return new WaitForSeconds(timer);
             timer += 0.25f;
-            marco = GameObject.Find("TestMarco(Clone)");
+            marco = GameObject.Find("Marco(Clone)");
 
             if(timer > 800){
                 success = false;
                 break;
             }
         }
-
+        parent.transform.position = new Vector3(0,0,0);
         
-
         if (success) {
             // Get Skeleton position
             var position = new Vector3(0,0,0);
             for(int i = 0; i < noIterations; i++){
-                position += firstPelvis.transform.position - marco.transform.position;
+                position += marco.transform.position - firstPelvis.transform.position;
+                t.text = "" + i;
                 yield return new WaitForSeconds(0.05f);
             }
             position /= noIterations;
-            parent.transform.position = new Vector3(position.x, parent.transform.position.y, position.z);
-            marco.transform.SetParent(parent.transform);
+            parent.transform.position = new Vector3(position.x, position.y+1f, position.z);
+
+            // marco.transform.SetParent(parent.transform);
+            Debug.Log("Successful marco calibration");
         } else {
             Debug.Log("Marco Calibration Failed");
         }
 
-        Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
 
@@ -251,8 +255,6 @@ public class main : MonoBehaviour
                 success = false;
                 break;
             }
-
-
         }
 
         while(true && success) {

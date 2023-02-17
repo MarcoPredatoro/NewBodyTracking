@@ -5,7 +5,9 @@ using Photon.Pun;
 
 public class NetworkPlayerMapping : MonoBehaviour
 {
-    private Transform Kinect4AzureTracker;
+    public string bone;
+    public string pointBody;
+    private Transform playerHead;
     private PhotonView photonView;
     // public GameObject cubePrefab ;
 
@@ -16,12 +18,21 @@ public class NetworkPlayerMapping : MonoBehaviour
             // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
             GameObject.Find("Main").GetComponent<main>().losePoints(10);
         }
+        if (collision.gameObject.name == "LeftHand"){
+            // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
+            GameObject.Find("Main").GetComponent<main>().losePoints(10);
+        }
+        if (collision.gameObject.name == "RightHand"){
+            // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
+            GameObject.Find("Main").GetComponent<main>().losePoints(10);
+        }
     } 
     
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        Kinect4AzureTracker = GameObject.Find("Kinect4AzureTracker").GetComponentInChildren<Transform>().Find("pointBody").Find("pelvis");
+        playerHead = GameObject.Find("Kinect4AzureTracker").GetComponentInChildren<Transform>().Find(pointBody).Find(bone);
+
     }
 
     // void OnTriggerEnter (Collider other ){
@@ -53,7 +64,7 @@ public class NetworkPlayerMapping : MonoBehaviour
     void Update()
     {
         if (photonView.IsMine) {
-            mapSpawnedObject(Kinect4AzureTracker);
+            mapSpawnedObject(playerHead);
         }
     }
 

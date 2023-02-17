@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -2494581068902661506}
   - component: {fileID: -305341105668751414}
   m_Layer: 8
-  m_Name: Polo
+  m_Name: Polo2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bone: head
-  pointBody: pointBody
+  pointBody: pointBody1
 --- !u!54 &3574904313960506528
 Rigidbody:
   m_ObjectHideFlags: 0
