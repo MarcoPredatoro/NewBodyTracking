@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
-public class NetworkPlayerMapping : MonoBehaviour
+public class NetworkPlayerMapping : MonoBehaviourPun
 {
     public string bone;
     public string pointBody;
@@ -11,20 +13,36 @@ public class NetworkPlayerMapping : MonoBehaviour
     private PhotonView photonView;
     // public GameObject cubePrefab ;
 
+    //event codes:
+    private const byte MARCO_STAB_EVENT = 2;
+
     // // Start is called before the first frame update
+
+    private void MarcoCollision()
+    {
+        Debug.Log("sent: ");
+        RaiseEventOptions options = RaiseEventOptions.Default;
+        options.Receivers = ReceiverGroup.All;
+        PhotonNetwork.RaiseEvent(MARCO_STAB_EVENT, 10, options, SendOptions.SendReliable);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Marco(Clone)"){
             // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
-            GameObject.Find("Main").GetComponent<main>().losePoints(10);
+            //GameObject.Find("Main").GetComponent<main>().losePoints(10);
+            MarcoCollision();
         }
         if (collision.gameObject.name == "LeftHand"){
             // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
-            GameObject.Find("Main").GetComponent<main>().losePoints(10);
+            //GameObject.Find("Main").GetComponent<main>().losePoints(10);
+            MarcoCollision();
         }
         if (collision.gameObject.name == "RightHand"){
             // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
-            GameObject.Find("Main").GetComponent<main>().losePoints(10);
+            //GameObject.Find("Main").GetComponent<main>().losePoints(10);
+            MarcoCollision();
+
         }
     } 
     
