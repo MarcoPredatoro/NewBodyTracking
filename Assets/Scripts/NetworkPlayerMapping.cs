@@ -18,31 +18,22 @@ public class NetworkPlayerMapping : MonoBehaviourPun
 
     // // Start is called before the first frame update
 
-    private void MarcoCollision()
-    {
-        Debug.Log("sent: ");
-        RaiseEventOptions options = RaiseEventOptions.Default;
-        options.Receivers = ReceiverGroup.All;
-        PhotonNetwork.RaiseEvent(MARCO_STAB_EVENT, 10, options, SendOptions.SendReliable);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Marco(Clone)"){
             // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
             //GameObject.Find("Main").GetComponent<main>().losePoints(10);
-            MarcoCollision();
+            GameObject.Find("Main").GetComponent<main>().marcoCollision();
         }
         if (collision.gameObject.name == "LeftHand"){
             // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
             //GameObject.Find("Main").GetComponent<main>().losePoints(10);
-            MarcoCollision();
+            GameObject.Find("Main").GetComponent<main>().marcoCollision();
         }
         if (collision.gameObject.name == "RightHand"){
             // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
             //GameObject.Find("Main").GetComponent<main>().losePoints(10);
-            MarcoCollision();
-
+            GameObject.Find("Main").GetComponent<main>().marcoCollision();
         }
     } 
     

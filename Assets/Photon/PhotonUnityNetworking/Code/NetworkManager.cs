@@ -7,6 +7,9 @@ using Photon.Realtime;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+    // event codes
+    private const byte RESET_POINTS_EVENT = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +52,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("New Player entered room");
         base.OnPlayerEnteredRoom(newPlayer);
+        GameObject.Find("Main").GetComponent<RFID>().ResetPoints();
     }
 
     public override void OnCreatedRoom() {

@@ -35,6 +35,9 @@ public class main : MonoBehaviour
 
     public Text syncText;
 
+    //event codes
+    private const byte MARCO_STAB_EVENT = 2;
+
 
     void Start()
     {
@@ -225,12 +228,25 @@ public class main : MonoBehaviour
         }
     }
 
+    private bool stab = false;
+    public void marcoCollision()
+    {
+        if (!stab)
+        {
+            stab = true;
+            problemImage.color = new Color(255, 0, 0);
+            problemImage.material = problemMaterial;
+            GetComponent<RFID>().SendMarcoCollision();
+            StartCoroutine(turnBacktoWhite());
+        }
+    }
 
     IEnumerator<WaitForSeconds> turnBacktoWhite() {
         yield return new WaitForSeconds(5);
         problemImage.material = reset;
         problemImage.color = new Color(255,255,255);
-        loseTimer = false;
+        //loseTimer = false;
+        stab = false;
     }
 
 
