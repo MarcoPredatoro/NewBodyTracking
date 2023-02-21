@@ -18,11 +18,6 @@ public class main : MonoBehaviour
     private SkeletalTrackingProvider m_skeletalTrackingProvider;
     private SkeletalTrackingProvider m_skeletalTrackingProvider1;
 
-    public GameObject firstPelvis;
-    public GameObject secondPelvis;
-
-    private int noIterations = 100;
-
     public BackgroundData m_lastFrameData = new BackgroundData();
 
     public int points;
@@ -33,7 +28,6 @@ public class main : MonoBehaviour
     public Material reset;
     public Text pointsText;
 
-    public Text syncText;
 
 
     void Start()
@@ -51,10 +45,7 @@ public class main : MonoBehaviour
         // points = 0;
         pointsText.text = "Points: " + points;
 
-        // StartCoroutine(makePoloAppear());
-
-        StartCoroutine(WaitTwoCameraCalibrate());
-        // StartCoroutine(WaitCameraMarcoCalibrate());
+        StartCoroutine(makePoloAppear());
         
     }
 
@@ -107,95 +98,19 @@ public class main : MonoBehaviour
         }
     }
 
-/*
+    public SkeletalTrackingProvider GetSkeletalTrackingProvider(int i){
+        if(i == 0 ){
+            return m_skeletalTrackingProvider;
+        } else if (i == 1) {
+            return m_skeletalTrackingProvider1;
+        }
+        return m_skeletalTrackingProvider;
+    }
+/*  
 
     Camera Calibration
 
 */
-    IEnumerator<WaitForSeconds> WaitTwoCameraCalibrate() {
-        Debug.Log("Starting Camera Calibration");
-        float timer = 0.5f;
-        bool success = true;
-        
-        while (!(m_skeletalTrackingProvider.IsRunning && m_skeletalTrackingProvider1.IsRunning)){
-            yield return new WaitForSeconds(timer);
-            timer += 0.25f;
-            if(timer > 60){
-                success = false;
-                break;
-            }
-        }
-
-        if (success) {
-            Debug.Log("Calibrating Cameras");  
-            Vector3 translation = new Vector3(0,0,0);
-            Vector3 rotation = new UnityEngine.Vector3(0,0,0);
-            for (var i = 0; i < noIterations; i++){
-                var bone_0 = firstPelvis.transform.position;
-                var bone_1 = secondPelvis.transform.position;
-                var rotation_0 = firstPelvis.transform.rotation.eulerAngles;
-                var rotation_1 = secondPelvis.transform.rotation.eulerAngles;
-
-                translation += bone_1 - bone_0;
-                rotation += rotation_1 - rotation_0;
-
-                
-            }
-            translation /= noIterations;
-            rotation /= noIterations;
-
-            Debug.Log(translation + " " + rotation);
-        } else {
-            Debug.Log("Camera Calibration failed");
-        }
-    }
-
-/*
-    Marco
-*/
-
-    
-    public void Syncronisation() {
-        StartCoroutine(WaitCameraMarcoCalibrate(syncText));
-    }
-
-    public IEnumerator<WaitForSeconds> WaitCameraMarcoCalibrate(Text t) {
-        Debug.Log("Starting Marco Calibration");
-        float timer = 0.5f;
-        bool success = true;
-        var marco = GameObject.Find("Marco(Clone)");
-        var parent = GameObject.Find("MarcoContainer");
-        
-        while ((!m_skeletalTrackingProvider.IsRunning || marco == null) && success){
-            yield return new WaitForSeconds(timer);
-            timer += 0.25f;
-            marco = GameObject.Find("Marco(Clone)");
-
-            if(timer > 800){
-                success = false;
-                break;
-            }
-        }
-        parent.transform.position = new Vector3(0,0,0);
-        
-        if (success) {
-            // Get Skeleton position
-            var position = new Vector3(0,0,0);
-            for(int i = 0; i < noIterations; i++){
-                position += marco.transform.position - firstPelvis.transform.position;
-                t.text = "" + i;
-                yield return new WaitForSeconds(0.05f);
-            }
-            position /= noIterations;
-            parent.transform.position = new Vector3(position.x, position.y+1f, position.z);
-
-            // marco.transform.SetParent(parent.transform);
-            Debug.Log("Successful marco calibration");
-        } else {
-            Debug.Log("Marco Calibration Failed");
-        }
-
-    }
 
 
 /*
@@ -239,17 +154,17 @@ public class main : MonoBehaviour
     Appearing and disapearing polo
 
 */
-
+    public GameObject poloPosition;
     IEnumerator<WaitForSeconds> makePoloAppear() {
         Debug.Log("Starting Make Polo Appear");
         float timer = 0.5f;
         bool success = true;
-        var game = GameObject.Find("Polo(Clone)");
+        var game = GameObject.Find("Person");
         
         while (game == null && success){
             yield return new WaitForSeconds(timer);
             timer += 0.25f;
-            game = GameObject.Find("Polo(Clone)");
+            game = GameObject.Find("Person");
 
             if(timer > 400){
                 success = false;
@@ -258,9 +173,10 @@ public class main : MonoBehaviour
         }
 
         while(true && success) {
-            game.GetComponent<MeshRenderer>().enabled = false;
-            yield return new WaitForSeconds(15);
-            game.GetComponent<MeshRenderer>().enabled = true;
+            poloPosition.GetComponent<MeshRenderer>().enabled = false;
+            yield return new WaitForSeconds(4);
+            poloPosition.transform.position = new Vector3(game.transform.position.x, game.transform.position.y, game.transform.position.z);
+            poloPosition.GetComponent<MeshRenderer>().enabled = true;
             yield return new WaitForSeconds(3);
 
         }
