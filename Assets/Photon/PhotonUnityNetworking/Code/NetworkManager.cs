@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 
 public class NetworkManager : MonoBehaviourPunCallbacks
@@ -52,7 +53,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("New Player entered room");
         base.OnPlayerEnteredRoom(newPlayer);
-        GameObject.Find("Main").GetComponent<RFID>().ResetPoints();
+        Debug.Log("resetting points");
+        RaiseEventOptions options = RaiseEventOptions.Default;
+        options.Receivers = ReceiverGroup.All;
+        PhotonNetwork.RaiseEvent(RESET_POINTS_EVENT, true, options, SendOptions.SendReliable);
+
     }
 
     public override void OnCreatedRoom() {
