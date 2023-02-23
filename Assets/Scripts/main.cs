@@ -236,7 +236,7 @@ public class main : MonoBehaviour
             stab = true;
             problemImage.color = new Color(255, 0, 0);
             problemImage.material = problemMaterial;
-            GetComponent<RFID>().SendMarcoCollision();
+            GetComponent<EventManager>().SendMarcoCollision();
             StartCoroutine(turnBacktoWhite());
         }
     }

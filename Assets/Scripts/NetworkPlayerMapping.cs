@@ -21,18 +21,12 @@ public class NetworkPlayerMapping : MonoBehaviourPun
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Marco(Clone)"){
-            // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
-            //GameObject.Find("Main").GetComponent<main>().losePoints(10);
             GameObject.Find("Main").GetComponent<main>().marcoCollision();
         }
         if (collision.gameObject.name == "LeftHand"){
-            // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
-            //GameObject.Find("Main").GetComponent<main>().losePoints(10);
             GameObject.Find("Main").GetComponent<main>().marcoCollision();
         }
         if (collision.gameObject.name == "RightHand"){
-            // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
-            //GameObject.Find("Main").GetComponent<main>().losePoints(10);
             GameObject.Find("Main").GetComponent<main>().marcoCollision();
         }
     } 
