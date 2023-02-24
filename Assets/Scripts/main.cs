@@ -18,7 +18,8 @@ public class main : MonoBehaviour
     private SkeletalTrackingProvider m_skeletalTrackingProvider;
     private SkeletalTrackingProvider m_skeletalTrackingProvider1;
 
-    public BackgroundData m_lastFrameData = new BackgroundData();
+    public BackgroundData m_lastFrameData0 = new BackgroundData();
+    public BackgroundData m_lastFrameData1 = new BackgroundData();
 
     public int points;
 
@@ -32,24 +33,30 @@ public class main : MonoBehaviour
 
     void Start()
     {
-        // if (Device.GetInstalledCount() == 1){
-        //     m_skeletalTrackingProvider = new SkeletalTrackingProvider(0);
-        // } else if (Device.GetInstalledCount() == 2) {
-        // MakeCalibration make = new MakeCalibration();
-        // UnityEngine.Debug.Log(make.calibrate());
         m_skeletalTrackingProvider = new SkeletalTrackingProvider(0);
         m_skeletalTrackingProvider1 = new SkeletalTrackingProvider(1);
         
-        // }
 
-        // points = 0;
         pointsText.text = "Points: " + points;
 
-        StartCoroutine(makePoloAppear());
         
     }
 
     void Update() {
+
+        /*
+
+            Loop through all bodies,
+            If there x,z are close to each other (will do this by 1.x - 0.x > or < 0.2)
+            only render one of the skeletons
+            Make sure to keep track of which skeletons have been rendered (using a list or something)
+
+            Render all remaining skeletons
+
+            Check to see if you can render the one cameras skeleton using the other azure tracker!!
+        */
+
+
         if (m_skeletalTrackingProvider.IsRunning) {
             if (m_skeletalTrackingProvider.GetCurrentFrameData(ref m_lastFrameData))
             {
@@ -78,7 +85,7 @@ public class main : MonoBehaviour
                 if (m_lastFrameData.NumOfBodies > 0)
                 {
                     m_tracker_2.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData,0);
-                    // m_tracker_2.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData,1);
+                    m_tracker_2.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData,1);
                     // m_tracker_2.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData,1);
                     // m_tracker2.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData,2);
                 }
@@ -106,6 +113,7 @@ public class main : MonoBehaviour
         }
         return m_skeletalTrackingProvider;
     }
+
 /*  
 
     Camera Calibration
@@ -149,44 +157,6 @@ public class main : MonoBehaviour
     }
 
 
-/*
-
-    Appearing and disapearing polo
-
-*/
-    public GameObject poloPosition;
-    IEnumerator<WaitForSeconds> makePoloAppear() {
-        Debug.Log("Starting Make Polo Appear");
-        float timer = 0.5f;
-        bool success = true;
-        var game = GameObject.Find("Person");
-        
-        while (game == null && success){
-            yield return new WaitForSeconds(timer);
-            timer += 0.25f;
-            game = GameObject.Find("Person");
-
-            if(timer > 400){
-                success = false;
-                break;
-            }
-        }
-
-        while(true && success) {
-            poloPosition.GetComponent<MeshRenderer>().enabled = false;
-            yield return new WaitForSeconds(4);
-            poloPosition.transform.position = new Vector3(game.transform.position.x, game.transform.position.y, game.transform.position.z);
-            poloPosition.GetComponent<MeshRenderer>().enabled = true;
-            yield return new WaitForSeconds(3);
-
-        }
-
-        if (!success) {
-            Debug.Log("Polo Disapearing Failed");
-        }
-
-
-    }
 }
 
 

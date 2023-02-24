@@ -12,6 +12,7 @@ public class SkeletalTrackingProvider : BackgroundDataProvider
     TimeSpan initialTimestamp;
 
     public Calibration deviceCalibration;
+    private ImuSample imuSample;
 
     public SkeletalTrackingProvider(int id) : base(id)
     {
@@ -56,14 +57,14 @@ public class SkeletalTrackingProvider : BackgroundDataProvider
                 //     Debug.Log("");
                 // }
 
-                // device.StartImu();
+                device.StartImu();
                 using (Tracker tracker = Tracker.Create(deviceCalibration, new TrackerConfiguration() { ProcessingMode = TrackerProcessingMode.Gpu, SensorOrientation = SensorOrientation.Default }))
                 {
                     UnityEngine.Debug.Log("Body tracker created.");
                     while (!token.IsCancellationRequested)
                     {
                         
-                        // var imuSample = deviceCalibration.DeviceExtrinsics[12].Rotation;
+                        imuSample = device.GetImuSample();
                         
 
                         // Debug.Log(imuSample[0] + " " + imuSample[1] + " " + imuSample[2]);
@@ -137,7 +138,7 @@ public class SkeletalTrackingProvider : BackgroundDataProvider
                     Debug.Log("dispose of tracker now!!!!!");
                     tracker.Dispose();
                 }
-                // device.StopImu();
+                device.StopImu();
                 device.Dispose();
             }
             if (RawDataLoggingFile != null)
@@ -150,6 +151,10 @@ public class SkeletalTrackingProvider : BackgroundDataProvider
             Debug.Log($"catching exception for background thread {e.Message}");
             token.ThrowIfCancellationRequested();
         }
+    }
+    
+    public Vector3 AcceleromiterAngles() {
+        return new Vector3(imuSample.AccelerometerSample.X, imuSample.AccelerometerSample.Y, imuSample.AccelerometerSample.Z);
     }
 
 

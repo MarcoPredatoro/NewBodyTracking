@@ -27,6 +27,7 @@ public class MarcoCalibration : MonoBehaviour
         var parent = GameObject.Find("MarcoContainer");
         var m_skeletalTrackingProvider = main.GetComponent<main>().GetSkeletalTrackingProvider(0);
         
+        // Wait for the skeleton Tracker to be running and marco to have connected to the game
         while ((!m_skeletalTrackingProvider.IsRunning || marco == null) && success){
             yield return new WaitForSeconds(timer);
             timer += 0.25f;
