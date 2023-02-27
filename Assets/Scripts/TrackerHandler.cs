@@ -8,13 +8,11 @@ using Microsoft.Azure.Kinect.BodyTracking;
 public class TrackerHandler : MonoBehaviour
 {
     public Dictionary<JointId, JointId> parentJointMap;
-    Dictionary<JointId, Quaternion> basisJointMap;
+    public Dictionary<JointId, Quaternion> basisJointMap;
     public Quaternion[] absoluteJointRotations = new Quaternion[(int)JointId.Count];
     public bool drawSkeletons = true;
     public Quaternion Y_180_FLIP = new Quaternion(0.00000f, 0.70711f, 0.00000f, 0.70711f);
 
-    public Vector3 cameraRotation;
-    private Quaternion rotation;
     private const int PELVIS_BONE = 1;
 
 
@@ -190,9 +188,8 @@ public class TrackerHandler : MonoBehaviour
             Vector3 positionInTrackerRootSpace = transform.position + offsetPosition;
             Quaternion jointRot = Y_180_FLIP * new Quaternion(frameData.Bodies[i].JointRotations[PELVIS_BONE].X, frameData.Bodies[i].JointRotations[PELVIS_BONE].Y,
                 frameData.Bodies[i].JointRotations[PELVIS_BONE].Z, frameData.Bodies[i].JointRotations[PELVIS_BONE].W) * Quaternion.Inverse(basisJointMap[(JointId)PELVIS_BONE]);
-            absoluteJointRotations[PELVIS_BONE] = jointRot;
-            // Get the world location of the joint and the distance from the camera
             
+            // Get the world location of the joint and the distance from the camera
             list.Add(new Tuple<Vector3,float>(kinectTransform.rotation * jointRot * jointPos + kinectTransform.position, frameData.Bodies[i].JointPositions3D[PELVIS_BONE].Z));
 
         }
