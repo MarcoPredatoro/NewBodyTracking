@@ -71,7 +71,8 @@ public class CameraCalibration : MonoBehaviour
                 // Calculate the bone and foot position in order to calculate the translation (averaged for accuracy)
                 translation += - pelvis.transform.position;
                 floor += - foot.transform.position.y;
-                yield return new WaitForSeconds(0.005f);
+                
+                yield return new WaitForSeconds(0.01f);
             }   
             translation /= noIterations;
             floor /= noIterations;
@@ -120,7 +121,7 @@ public class CameraCalibration : MonoBehaviour
                 translation +=  bone_0 - bone_1;
                 rotation += rotation_0 - rotation_1;  
 
-                yield return new WaitForSeconds(0.005f);
+                yield return new WaitForSeconds(0.01f);
             }   
             translation /= noIterations;
             rotation /= noIterations;
