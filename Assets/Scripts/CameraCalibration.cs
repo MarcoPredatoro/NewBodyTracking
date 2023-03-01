@@ -6,7 +6,7 @@ using Microsoft.Azure.Kinect.BodyTracking;
 
 public class CameraCalibration : MonoBehaviour
 {
-    private int noIterations = 100;
+    private int noIterations = 120;
 
     public GameObject firstPelvis;
     public GameObject secondPelvis;
@@ -107,9 +107,6 @@ public class CameraCalibration : MonoBehaviour
 
         if (success) {
             Debug.Log("Calibrating Cameras");  
-            var currentRotation = tracker1.transform.rotation;
-            tracker1.transform.position = new Vector3();
-            tracker1.transform.rotation = new Quaternion();
             // Calculating the rotation between the cameras
             Quaternion rotation = new Quaternion();
             // Make sure to go through several frames of the game
@@ -130,7 +127,6 @@ public class CameraCalibration : MonoBehaviour
                         var tempR = rotation_0 * Quaternion.Inverse(rotation_1); 
                         rotationTemp = Quaternion.Slerp(rotationTemp, tempR, 0.5f);
                     }
-
                 }
                 if(i == 0){
                     rotation = rotationTemp;
@@ -138,10 +134,10 @@ public class CameraCalibration : MonoBehaviour
                     rotation = Quaternion.Slerp(rotation, rotationTemp, 0.5f);
                 }
 
-                yield return new WaitForSeconds(0.005f);
+                yield return new WaitForSeconds(0.05f);
             }   
-            container1.transform.rotation = Quaternion.Inverse(currentRotation) * tracker.transform.rotation ;
-            tracker1.transform.rotation = rotation;
+            // 
+            container1.transform.rotation = rotation;
             
 
             // Calculating the translation Between the Cameras
@@ -161,7 +157,7 @@ public class CameraCalibration : MonoBehaviour
                 yield return new WaitForSeconds(0.005f);
             }   
             translation /= noIterations;
-            tracker1.transform.position = translation;
+            container1.transform.position = translation;
 
             Debug.Log(translation + " " + rotation);
         } else {
