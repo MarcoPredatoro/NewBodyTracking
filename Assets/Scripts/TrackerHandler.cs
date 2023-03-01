@@ -13,7 +13,7 @@ public class TrackerHandler : MonoBehaviour
     public bool drawSkeletons = true;
     public Quaternion Y_180_FLIP = new Quaternion(0.00000f, 0.70711f, 0.00000f, 0.70711f);
 
-    private const int PELVIS_BONE = 1;
+    private const int PELVIS_BONE = 0;
 
 
     // Start is called before the first frame update

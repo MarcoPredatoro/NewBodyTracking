@@ -7,7 +7,7 @@ using Microsoft.Azure.Kinect.BodyTracking;
 public class MergeBodies : MonoBehaviour
 {
 
-    private const float SYNC_EPSILON = 0.5f;
+    public float SYNC_EPSILON = 1.0f;
     public GameObject m_tracker_0;
     public GameObject m_tracker_1;
 
@@ -43,7 +43,7 @@ public class MergeBodies : MonoBehaviour
                 for (int i = 0; i < location0.Count; i++){
                     for (int j = 0; j < location1.Count; j++){
                         // Check how close the bodies are together
-                        if(Mathf.Abs(Vector3.Magnitude(location0[i].Item1 - location1[j].Item1)) < SYNC_EPSILON && !isUsed[i] && !isUsed[location0.Count + j]) {
+                        if(GetXZDistance(location0[i].Item1, location1[j].Item1) < SYNC_EPSILON && !isUsed[i] && !isUsed[location0.Count + j]) {
                             // Add to the bodies array the tracker and the body location that is closest to it's respective camera
                             bodies.Add(location0[0].Item2 > location1[0].Item2 ? new Tuple<int, int>(0, i) : new Tuple<int, int>(1, j));
 
@@ -75,6 +75,14 @@ public class MergeBodies : MonoBehaviour
     
     private void renderSkeleton(Body skeleton, TrackerHandler tracker, Transform kinectTransform, int skeletonNumber)
     {
+        m_tracker_0.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData0, 0);
+        m_tracker_1.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData1, 0);
+
+        transform.GetChild(skeletonNumber).localPosition = kinectTransform.position;
+        transform.GetChild(skeletonNumber).localRotation = kinectTransform.rotation;
+
+        // Debug.Log(transform.GetChild(skeletonNumber).GetChild(0).GetChild(0).name);
+
         for (int jointNum = 0; jointNum < (int)JointId.Count; jointNum++)
         {
             Vector3 jointPos = new Vector3(skeleton.JointPositions3D[jointNum].X, -skeleton.JointPositions3D[jointNum].Y, skeleton.JointPositions3D[jointNum].Z);
@@ -84,8 +92,8 @@ public class MergeBodies : MonoBehaviour
                 skeleton.JointRotations[jointNum].Z, skeleton.JointRotations[jointNum].W) * Quaternion.Inverse(tracker.basisJointMap[(JointId)jointNum]);
 
             // these are absolute body space because each joint has the body root for a parent in the scene graph
-            transform.GetChild(skeletonNumber).GetChild(jointNum).localPosition = jointPos + kinectTransform.position;
-            transform.GetChild(skeletonNumber).GetChild(jointNum).localRotation = kinectTransform.rotation * jointRot ;
+            transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).localPosition = jointPos;
+            transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).localRotation = jointRot;
 
             const int boneChildNum = 0;
             if (tracker.parentJointMap[(JointId)jointNum] != JointId.Head && tracker.parentJointMap[(JointId)jointNum] != JointId.Count)
@@ -94,14 +102,14 @@ public class MergeBodies : MonoBehaviour
                     -skeleton.JointPositions3D[(int)tracker.parentJointMap[(JointId)jointNum]].Y, skeleton.JointPositions3D[(int)tracker.parentJointMap[(JointId)jointNum]].Z);
                 Vector3 boneDirectionTrackerSpace = jointPos - parentTrackerSpacePosition;
                 Vector3 boneDirectionWorldSpace = transform.rotation * boneDirectionTrackerSpace;
-                Vector3 boneDirectionLocalSpace = Quaternion.Inverse(transform.GetChild(skeletonNumber).GetChild(jointNum).rotation) * Vector3.Normalize(boneDirectionWorldSpace);
-                transform.GetChild(skeletonNumber).GetChild(jointNum).GetChild(boneChildNum).localScale = new Vector3(1, 20.0f * 0.5f * boneDirectionWorldSpace.magnitude, 1);
-                transform.GetChild(skeletonNumber).GetChild(jointNum).GetChild(boneChildNum).localRotation = Quaternion.FromToRotation(Vector3.up, boneDirectionLocalSpace);
-                transform.GetChild(skeletonNumber).GetChild(jointNum).GetChild(boneChildNum).position = transform.GetChild(skeletonNumber).GetChild(jointNum).position - 0.5f * boneDirectionWorldSpace;
+                Vector3 boneDirectionLocalSpace = Quaternion.Inverse(transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).rotation) * Vector3.Normalize(boneDirectionWorldSpace);
+                transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).GetChild(boneChildNum).localScale = new Vector3(1, 20.0f * 0.5f * boneDirectionWorldSpace.magnitude, 1);
+                transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).GetChild(boneChildNum).localRotation = Quaternion.FromToRotation(Vector3.up, boneDirectionLocalSpace);
+                transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).GetChild(boneChildNum).position = transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).position - 0.5f * boneDirectionWorldSpace;
             }
             else
             {
-                transform.GetChild(skeletonNumber).GetChild(jointNum).GetChild(boneChildNum).gameObject.SetActive(false);
+                transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).GetChild(boneChildNum).gameObject.SetActive(false);
             }
         }
     }
@@ -125,5 +133,11 @@ public class MergeBodies : MonoBehaviour
                 m_tracker_1.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData1, 2);
             }
         }
+    }
+
+    // Return the magnitude for the x and z components
+    private float GetXZDistance(Vector3 v1, Vector3 v2) {
+        Vector3 vector = v1 - v2;
+        return Mathf.Abs( Mathf.Sqrt( vector.x * vector.x + vector.z * vector.z ));
     }
 }

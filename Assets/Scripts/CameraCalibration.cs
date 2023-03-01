@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Microsoft.Azure.Kinect.BodyTracking;
 
 public class CameraCalibration : MonoBehaviour
 {
@@ -106,28 +107,61 @@ public class CameraCalibration : MonoBehaviour
 
         if (success) {
             Debug.Log("Calibrating Cameras");  
-            Vector3 translation = new Vector3(0,0,0);
-            Vector3 rotation = new UnityEngine.Vector3(0,0,0);
+            var currentRotation = tracker1.transform.rotation;
+            tracker1.transform.position = new Vector3();
+            tracker1.transform.rotation = new Quaternion();
+            // Calculating the rotation between the cameras
+            Quaternion rotation = new Quaternion();
             // Make sure to go through several frames of the game
             for (var i = 0; i < noIterations; i++){
                 syncText.text = "" + i;
+                Quaternion rotationTemp = new Quaternion();
+                for (int jointNum = 0; jointNum < (int)JointId.Count; jointNum++)
+                {
+                    // Calculate the value of the rotations for each set of bones
+                    var rotation_0 = tracker.transform.GetChild(0).GetChild(jointNum).rotation;
+                    var rotation_1 = tracker1.transform.GetChild(0).GetChild(jointNum).rotation;
+                    
+                    if(jointNum == 0){
+                        // If it is the first bone just set the value (makes sure to converge faster)
+                        rotationTemp = rotation_0 * Quaternion.Inverse(rotation_1); 
+                    } else {
+                        // Average the rotation for each bone
+                        var tempR = rotation_0 * Quaternion.Inverse(rotation_1); 
+                        rotationTemp = Quaternion.Slerp(rotationTemp, tempR, 0.5f);
+                    }
+
+                }
+                if(i == 0){
+                    rotation = rotationTemp;
+                } else {
+                    rotation = Quaternion.Slerp(rotation, rotationTemp, 0.5f);
+                }
+
+                yield return new WaitForSeconds(0.005f);
+            }   
+            container1.transform.rotation = Quaternion.Inverse(currentRotation) * tracker.transform.rotation ;
+            tracker1.transform.rotation = rotation;
+            
+
+            // Calculating the translation Between the Cameras
+
+            Vector3 translation = new Vector3(0,0,0);
+            // Make sure to go through several frames of the game
+            for (var i = 0; i < noIterations; i++){
+                syncText.text = "" + (noIterations + i);
+
                 // Calculate the value of the transforms and rotations for each set of bones
                 var bone_0 = firstPelvis.transform.position;
                 var bone_1 = secondPelvis.transform.position;
-                var rotation_0 = firstPelvis.transform.rotation.eulerAngles;
-                var rotation_1 = secondPelvis.transform.rotation.eulerAngles;
 
                 // Sum them in order to calcualate the average difference (for the translation)
-                translation +=  bone_0 - bone_1;
-                rotation += rotation_0 - rotation_1;  
+                translation += bone_0 - bone_1;
 
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.005f);
             }   
             translation /= noIterations;
-            rotation /= noIterations;
-
-            // container1.transform.rotation = Quaternion.Euler(rotation);
-            container1.transform.position = new Vector3(translation.x, translation.y, translation.z);
+            tracker1.transform.position = translation;
 
             Debug.Log(translation + " " + rotation);
         } else {
