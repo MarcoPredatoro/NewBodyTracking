@@ -190,7 +190,7 @@ public class TrackerHandler : MonoBehaviour
                 frameData.Bodies[i].JointRotations[PELVIS_BONE].Z, frameData.Bodies[i].JointRotations[PELVIS_BONE].W) * Quaternion.Inverse(basisJointMap[(JointId)PELVIS_BONE]);
             
             // Get the world location of the joint and the distance from the camera
-            list.Add(new Tuple<Vector3,float>(kinectTransform.rotation * jointRot * jointPos + kinectTransform.position, frameData.Bodies[i].JointPositions3D[PELVIS_BONE].Z));
+            list.Add(new Tuple<Vector3,float>(kinectTransform.rotation * (jointRot * jointPos + kinectTransform.position), frameData.Bodies[i].JointPositions3D[PELVIS_BONE].Z));
 
         }
         return list;
