@@ -18,18 +18,18 @@ public class NetworkPlayerMapping : MonoBehaviourPun
 
     // // Start is called before the first frame update
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "Marco(Clone)"){
-            GameObject.Find("Main").GetComponent<main>().marcoCollision();
-        }
-        if (collision.gameObject.name == "LeftHand"){
-            GameObject.Find("Main").GetComponent<main>().marcoCollision();
-        }
-        if (collision.gameObject.name == "RightHand"){
-            GameObject.Find("Main").GetComponent<main>().marcoCollision();
-        }
-    } 
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.name == "Marco(Clone)"){
+    //        GameObject.Find("Main").GetComponent<main>().marcoCollision();
+    //    }
+    //    if (collision.gameObject.name == "LeftHand"){
+    //        GameObject.Find("Main").GetComponent<main>().marcoCollision();
+    //    }
+    //    if (collision.gameObject.name == "RightHand"){
+    //        GameObject.Find("Main").GetComponent<main>().marcoCollision();
+    //    }
+    //} 
     
     void Start()
     {
