@@ -134,7 +134,7 @@ public class CameraCalibration : MonoBehaviour
                     rotation = Quaternion.Slerp(rotation, rotationTemp, 0.5f);
                 }
 
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.005f);
             }   
             // 
             container1.transform.rotation = rotation;

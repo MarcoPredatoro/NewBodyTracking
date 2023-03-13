@@ -178,7 +178,7 @@ public class TrackerHandler : MonoBehaviour
         return retIndex;
     }
 
-    public List<Tuple<Vector3,float>> getLocations(BackgroundData frameData, Transform kinectTransform) {
+    public List<Tuple<Vector3,float>> getLocations(BackgroundData frameData) {
         List<Tuple<Vector3,float>> list = new List<Tuple<Vector3,float>>();
         for (int i = 0; i < (int)frameData.NumOfBodies; i++)
         {
@@ -186,11 +186,9 @@ public class TrackerHandler : MonoBehaviour
             Vector3 jointPos = new Vector3(frameData.Bodies[i].JointPositions3D[PELVIS_BONE].X, -frameData.Bodies[i].JointPositions3D[PELVIS_BONE].Y, frameData.Bodies[i].JointPositions3D[PELVIS_BONE].Z);
             Vector3 offsetPosition = transform.rotation * jointPos ;
             Vector3 positionInTrackerRootSpace = transform.position + offsetPosition;
-            Quaternion jointRot = Y_180_FLIP * new Quaternion(frameData.Bodies[i].JointRotations[PELVIS_BONE].X, frameData.Bodies[i].JointRotations[PELVIS_BONE].Y,
-                frameData.Bodies[i].JointRotations[PELVIS_BONE].Z, frameData.Bodies[i].JointRotations[PELVIS_BONE].W) * Quaternion.Inverse(basisJointMap[(JointId)PELVIS_BONE]);
             
             // Get the world location of the joint and the distance from the camera
-            list.Add(new Tuple<Vector3,float>(kinectTransform.rotation * (jointRot * jointPos + kinectTransform.position), frameData.Bodies[i].JointPositions3D[PELVIS_BONE].Z));
+            list.Add(new Tuple<Vector3,float>(positionInTrackerRootSpace, frameData.Bodies[i].JointPositions3D[PELVIS_BONE].Z));
 
         }
         return list;
