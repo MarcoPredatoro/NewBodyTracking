@@ -17,15 +17,6 @@ public class main : MonoBehaviour
     private SkeletalTrackingProvider m_skeletalTrackingProvider1;
 
     public MergeBodies mergeBodies;
-
-    public int points;
-
-    public Text problemText;
-    public UnityEngine.UI.Image problemImage;
-    public Material problemMaterial;
-    public Material reset;
-    public Text pointsText;
-
     public bool renderMergedSkeletons = false;
 
 
@@ -34,10 +25,6 @@ public class main : MonoBehaviour
     {
         m_skeletalTrackingProvider = new SkeletalTrackingProvider(0);
         m_skeletalTrackingProvider1 = new SkeletalTrackingProvider(1);
-        
-
-        pointsText.text = "Points: " + points;
-
         
     }
 
@@ -81,34 +68,34 @@ public class main : MonoBehaviour
 
 */
 
-    public int getPoints() {
-        return points;
-    }
+    // public int getPoints() {
+    //     // return points;
+    // }
     public void updatePoints(int value) {
-        points += value;
-        pointsText.text = "Points: " + points.ToString();
+        // points += value;
+        // pointsText.text = "Points: " + points.ToString();
     }
 
     private bool loseTimer = false;
     public void losePoints(int value) {
-        if (!loseTimer) {
-            loseTimer = true;
-            points -= value;
-            pointsText.text = "Points: " + points.ToString();
-            problemImage.color = new Color(255,0,0);
-            problemImage.material = problemMaterial;
-            StartCoroutine(turnBacktoWhite());
+        // if (!loseTimer) {
+        //     loseTimer = true;
+        //     points -= value;
+        //     pointsText.text = "Points: " + points.ToString();
+        //     problemImage.color = new Color(255,0,0);
+        //     problemImage.material = problemMaterial;
+        //     StartCoroutine(turnBacktoWhite());
 
-        }
+        // }
     }
 
 
-    IEnumerator<WaitForSeconds> turnBacktoWhite() {
-        yield return new WaitForSeconds(5);
-        problemImage.material = reset;
-        problemImage.color = new Color(255,255,255);
-        loseTimer = false;
-    }
+    // IEnumerator<WaitForSeconds> turnBacktoWhite() {
+    //     yield return new WaitForSeconds(5);
+    //     problemImage.material = reset;
+    //     problemImage.color = new Color(255,255,255);
+    //     loseTimer = false;
+    // }
 
 
 }
