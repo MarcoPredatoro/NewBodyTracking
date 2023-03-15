@@ -12,6 +12,8 @@ public class EventManager : MonoBehaviour
     private const byte RFID_POINTS_EVENT = 1;
     private const byte MARCO_STAB_EVENT = 2;
     private const byte RESET_POINTS_EVENT = 3;
+    private const byte SEQUENCE_GENERATED_EVENT = 4;
+    private const byte SEQUENCE_COMPLETED_EVENT = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,27 @@ public class EventManager : MonoBehaviour
         PhotonNetwork.RaiseEvent(RESET_POINTS_EVENT, true, options, SendOptions.SendReliable);
     }
 
+    //private int sequenceLength = 5;
+    private System.Random rnd = new System.Random();
+    public void GenerateSequence(int sequenceLength, int numberOfButtons)
+    {
+        int[] sequence = new int[sequenceLength];
+        for (int i = 0; i < sequenceLength; i++)
+        {
+            sequence[i] = rnd.Next(97, 97 + numberOfButtons);
+        }
+        Debug.Log("broadcasting sequence: " + sequence[0] + sequence[1] + sequence[2]);
+        RaiseEventOptions options = RaiseEventOptions.Default;
+        options.Receivers = ReceiverGroup.All;
+        PhotonNetwork.RaiseEvent(SEQUENCE_GENERATED_EVENT, sequence, options, SendOptions.SendReliable);
+    }
+    public void SequenceCompleted()
+    {
+        Debug.Log("sequence completed");
+        RaiseEventOptions options = RaiseEventOptions.Default;
+        options.Receivers = ReceiverGroup.All;
+        PhotonNetwork.RaiseEvent(SEQUENCE_COMPLETED_EVENT, true, options, SendOptions.SendReliable);
+    }
     private void OnEnable()
     {
         PhotonNetwork.NetworkingClient.EventReceived += NetworkingClient_EventReceived;
@@ -76,6 +99,18 @@ public class EventManager : MonoBehaviour
         {
             GetComponent<main>().points = 0;
             GetComponent<main>().updatePoints(0);
+        }
+        else if (obj.Code == SEQUENCE_GENERATED_EVENT)
+        {
+            // hand the sequence to the button listener to be listened for
+            int[] sequence = (int[])obj.CustomData;
+            Debug.Log("received sequence: " + sequence[0] + sequence[1] + sequence[2]);
+            GetComponent<ButtonListener>().RecieveSequence(sequence);
+        }
+        else if (obj.Code == SEQUENCE_COMPLETED_EVENT)
+        {
+            // open the box and generate a new sequence?
+            GenerateSequence(5, 4);
         }
     }
 }
