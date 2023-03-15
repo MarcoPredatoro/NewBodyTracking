@@ -49,7 +49,7 @@ public class EventManager : MonoBehaviour
         {
             sequence[i] = rnd.Next(97, 97 + numberOfButtons);
         }
-        Debug.Log("broadcasting sequence: " + sequence[0] + sequence[1] + sequence[2]);
+        Debug.Log("broadcasting sequence: " + sequence[0] + sequence[1] + sequence[2] + sequence[3]);
         RaiseEventOptions options = RaiseEventOptions.Default;
         options.Receivers = ReceiverGroup.All;
         PhotonNetwork.RaiseEvent(SEQUENCE_GENERATED_EVENT, sequence, options, SendOptions.SendReliable);
@@ -99,7 +99,8 @@ public class EventManager : MonoBehaviour
         else if (obj.Code == SEQUENCE_COMPLETED_EVENT)
         {
             // open the box and generate a new sequence?
-            GenerateSequence(5, 4);
+            points.updatePoints(20);
+            GenerateSequence(4, 4);
         }
     }
 }

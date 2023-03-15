@@ -33,7 +33,7 @@ public class ButtonListener : MonoBehaviour
             newSeq[i] = (char)seq[i];
         }
         sequence = newSeq;
-        Debug.Log("Sequence received: " + sequence[0] + sequence[1] + sequence[2]);
+        Debug.Log("Sequence received: " + sequence[0] + sequence[1] + sequence[2] + sequence[3]);
     }
     private void OnGUI()
     {
@@ -45,7 +45,7 @@ public class ButtonListener : MonoBehaviour
             //Debug.Log(Event.current.keyCode.ToString() + e.character);
             if (e.character == 'g')
             {
-                GetComponent<EventManager>().GenerateSequence(3, 4);
+                GetComponent<EventManager>().GenerateSequence(4, 4);
             }
             else if (e.character == sequence[indexListeningFor])
             {
