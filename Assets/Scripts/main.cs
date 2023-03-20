@@ -39,8 +39,6 @@ public class main : MonoBehaviour
         
     }
 
-    
-
     void OnApplicationQuit()
     {
         if (m_skeletalTrackingProvider != null)
