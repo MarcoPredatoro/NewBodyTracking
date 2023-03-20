@@ -31,7 +31,7 @@ public class NetworkPlayerMapping : MonoBehaviour
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        playerHead = GameObject.Find("Kinect4AzureTracker").GetComponentInChildren<Transform>().Find(pointBody).Find(bone);
+        playerHead = GameObject.Find("MergedBodyTracker").GetComponentInChildren<Transform>().Find(pointBody).Find("pointBody").Find(bone);
 
     }
 

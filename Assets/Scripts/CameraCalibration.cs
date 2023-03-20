@@ -128,15 +128,16 @@ public class CameraCalibration : MonoBehaviour
                         rotationTemp = Quaternion.Slerp(rotationTemp, tempR, 0.5f);
                     }
                 }
+                Debug.Log(rotation.eulerAngles + " " + rotationTemp.eulerAngles);
                 if(i == 0){
                     rotation = rotationTemp;
                 } else {
                     rotation = Quaternion.Slerp(rotation, rotationTemp, 0.5f);
                 }
 
-                yield return new WaitForSeconds(0.005f);
+                yield return new WaitForSeconds(0.05f);
             }   
-            // 
+            
             container1.transform.rotation = rotation;
             
 
@@ -154,7 +155,7 @@ public class CameraCalibration : MonoBehaviour
                 // Sum them in order to calcualate the average difference (for the translation)
                 translation += bone_0 - bone_1;
 
-                yield return new WaitForSeconds(0.005f);
+                yield return new WaitForSeconds(0.01f);
             }   
             translation /= noIterations;
             container1.transform.position = translation;

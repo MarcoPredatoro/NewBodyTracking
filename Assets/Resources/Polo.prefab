@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dded80134726ce24b85bead2ad3cdd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bone: head
-  pointBody: pointBody
+  bone: spineChest
+  pointBody: body
 --- !u!54 &3574904313960506528
 Rigidbody:
   m_ObjectHideFlags: 0

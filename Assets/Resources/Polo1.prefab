@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bone: head
-  pointBody: pointBody
+  pointBody: body
 --- !u!54 &3574904313960506528
 Rigidbody:
   m_ObjectHideFlags: 0
