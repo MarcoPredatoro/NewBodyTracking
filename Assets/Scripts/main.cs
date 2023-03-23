@@ -29,6 +29,7 @@ public class main : MonoBehaviour
     }
 
     void Update() {
+        
         if (m_skeletalTrackingProvider.IsRunning && m_skeletalTrackingProvider1.IsRunning) {
             if (renderMergedSkeletons) {
                 mergeBodies.renderSkeletons(m_skeletalTrackingProvider, m_skeletalTrackingProvider1 );

@@ -36,16 +36,7 @@ public class MergeBodies : MonoBehaviour
                 // Calculate the location of the bodies in world space 
                 List<Tuple<Vector3,float>> location0 = m_tracker_0.GetComponent<TrackerHandler>().getLocations(m_lastFrameData0);
                 List<Tuple<Vector3,float>> location1 = m_tracker_1.GetComponent<TrackerHandler>().getLocations(m_lastFrameData1);
-
-                for (int i = 0; i < location0.Count; i++){
-                    Debug.Log(location0[i].Item1);
-                }
-
-                for (int i = 0; i < location1.Count; i++){
-                    Debug.Log(location1[i].Item1);
-                }
-                   
-                
+                                   
                 List<Tuple<int, int>> bodies = new List<Tuple<int, int>>();
                 List<bool> isUsed = new List<bool>(new bool[location0.Count + location1.Count]);
                 

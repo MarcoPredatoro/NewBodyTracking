@@ -128,7 +128,6 @@ public class CameraCalibration : MonoBehaviour
                         rotationTemp = Quaternion.Slerp(rotationTemp, tempR, 0.5f);
                     }
                 }
-                Debug.Log(rotation.eulerAngles + " " + rotationTemp.eulerAngles);
                 if(i == 0){
                     rotation = rotationTemp;
                 } else {
