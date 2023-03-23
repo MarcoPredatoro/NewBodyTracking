@@ -5,31 +5,19 @@ using Microsoft.Azure.Kinect.BodyTracking;
 using System.Text;
 using Photon.Pun;
 
-public class NetworkPuppeteering : MonoBehaviour
+public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
 {
-    //// from NetworkPlayerMapping
-    //public string bone;
-    //public string pointBody;
-    //private Transform playerHead;
-    //private PhotonView photonView;
-
-    //// from PuppetAvatar
-    //public TrackerHandler KinectDevice;
-    //Dictionary<JointId, Quaternion> absoluteOffsetMap;
-    //Animator PuppetAnimator;
-    //public GameObject RootPosition; // this is usually pelvis
-    //public Transform CharacterRootTransform;
-    //public float OffsetY;
-    //public float OffsetZ;
-
     // we will have to set all of these in Start
     TrackerHandler KinectDevice;
-    Dictionary<JointId, Quaternion> absoluteOffsetMap;
     Animator PuppetAnimator;
     //public string pointBody; // <--- you'll need this for multiple polos, maybe?
     GameObject RootPosition; // this is usually pelvis
     Transform CharacterRootTransform; // this is usually the transform of the gameobject the script is attached to
     PhotonView pv;
+    Dictionary<JointId, Quaternion> absoluteOffsetMap;
+    // here we go
+    [SerializeField]
+    Dictionary<JointId, Quaternion> kinectRotationsMap;
 
     float OffsetY = 1;
     float OffsetZ = 1;
@@ -65,30 +53,38 @@ public class NetworkPuppeteering : MonoBehaviour
     }
     private void Start()
     {
-        KinectDevice = GameObject.Find("Kinect4AzureTracker").GetComponent<TrackerHandler>();
+        // here's the fun part: working out what doesn't need to happen if it's received over the network
+        
         PuppetAnimator = GetComponent<Animator>();
-        // currently hardcoding the pointbody this belongs to
-        RootPosition = GameObject.Find("pointBody/pelvis");
-        CharacterRootTransform = GetComponent<Transform>();
         pv = GetComponent<PhotonView>();
 
-        Transform _rootJointTransform = CharacterRootTransform;
-
-        absoluteOffsetMap = new Dictionary<JointId, Quaternion>();
-        for (int i = 0; i < (int)JointId.Count; i++)
+        if (pv.IsMine)
         {
-            HumanBodyBones hbb = MapKinectJoint((JointId)i);
-            if (hbb != HumanBodyBones.LastBone)
+            KinectDevice = GameObject.Find("Kinect4AzureTracker").GetComponent<TrackerHandler>();
+            // currently hardcoding the pointbody this belongs to
+            RootPosition = GameObject.Find("pointBody/pelvis");
+            CharacterRootTransform = GetComponent<Transform>();
+
+            // there is definitely a case to be made for increasing the transmission rate from 10Hz, but oh well
+
+            Transform _rootJointTransform = CharacterRootTransform;
+
+            absoluteOffsetMap = new Dictionary<JointId, Quaternion>();
+            for (int i = 0; i < (int)JointId.Count; i++)
             {
-                Transform transform = PuppetAnimator.GetBoneTransform(hbb);
-                Quaternion absOffset = GetSkeletonBone(PuppetAnimator, transform.name).rotation;
-                // find the absolute offset for the tpose
-                while (!ReferenceEquals(transform, _rootJointTransform))
+                HumanBodyBones hbb = MapKinectJoint((JointId)i);
+                if (hbb != HumanBodyBones.LastBone)
                 {
-                    transform = transform.parent;
-                    absOffset = GetSkeletonBone(PuppetAnimator, transform.name).rotation * absOffset;
+                    Transform transform = PuppetAnimator.GetBoneTransform(hbb);
+                    Quaternion absOffset = GetSkeletonBone(PuppetAnimator, transform.name).rotation;
+                    // find the absolute offset for the tpose
+                    while (!ReferenceEquals(transform, _rootJointTransform))
+                    {
+                        transform = transform.parent;
+                        absOffset = GetSkeletonBone(PuppetAnimator, transform.name).rotation * absOffset;
+                    }
+                    absoluteOffsetMap[(JointId)i] = absOffset;
                 }
-                absoluteOffsetMap[(JointId)i] = absOffset;
             }
         }
     }
@@ -114,26 +110,71 @@ public class NetworkPuppeteering : MonoBehaviour
     {
         if (pv.IsMine)
         {
-            mapBones();
+            mapBonesFromKinect();
         }
     }
 
-    private void mapBones()
+    private void mapBonesFromKinect()
     {
+        Dictionary<JointId, Quaternion> kinectRotations = new Dictionary<JointId, Quaternion>();
         for (int j = 0; j < (int)JointId.Count; j++)
         {
             if (MapKinectJoint((JointId)j) != HumanBodyBones.LastBone && absoluteOffsetMap.ContainsKey((JointId)j))
             {
                 // get the absolute offset
                 Quaternion absOffset = absoluteOffsetMap[(JointId)j];
+                // calculate the new angle
+                Quaternion rot = absOffset * Quaternion.Inverse(absOffset) * KinectDevice.absoluteJointRotations[j] * absOffset;
+                // add it to the dictionary
+                kinectRotations[(JointId)j] = rot;
+
+                // get the transform of the hbb corresponding to the kinect joint in question
                 Transform finalJoint = PuppetAnimator.GetBoneTransform(MapKinectJoint((JointId)j));
-                finalJoint.rotation = absOffset * Quaternion.Inverse(absOffset) * KinectDevice.absoluteJointRotations[j] * absOffset;
+                // OVERWRITE the rotation of the bone
+                finalJoint.rotation = rot;
                 if (j == 0)
                 {
-                    // character root plus translation reading from the kinect, plus the offset from the script public variables
                     finalJoint.position = CharacterRootTransform.position + new Vector3(RootPosition.transform.localPosition.x, RootPosition.transform.localPosition.y + OffsetY, RootPosition.transform.localPosition.z - OffsetZ);
+
+                    // i'm just gonna
+                    // put a photonTransformView on the hip bone
                 }
+
+                // update the kinectRotationsMap i guess??
+                kinectRotationsMap = kinectRotations;
             }
+        }
+    }
+
+    private void mapBonesFromPhoton()
+    {
+        for (int j = 0; j < (int)JointId.Count; j++)
+        {
+            if (MapKinectJoint((JointId)j) != HumanBodyBones.LastBone && absoluteOffsetMap.ContainsKey((JointId)j))
+            {
+                // just uhh
+                // set the values that come through the stream i guess?
+
+                // get the transform of the hbb corresponding to the kinect joint in question
+                Transform finalJoint = PuppetAnimator.GetBoneTransform(MapKinectJoint((JointId)j));
+                finalJoint.rotation = kinectRotationsMap[(JointId)j];
+
+                // do i even need to do the position? i assume photonTransformView will deal with this???
+                // but only if i put a photonTransformView on the hips
+            }
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(kinectRotationsMap);
+        }
+        else if (stream.IsReading)
+        {
+            kinectRotationsMap = (Dictionary<JointId, Quaternion>)stream.ReceiveNext();
+            mapBonesFromPhoton();
         }
     }
 
