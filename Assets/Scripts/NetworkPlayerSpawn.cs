@@ -8,7 +8,7 @@ public class NetworkPlayerSpawn : MonoBehaviourPunCallbacks
 {
 
   private GameObject spawnedPlayerPrefab;
-  // private GameObject spawnedPlayerPrefab2;
+   private GameObject spawnedPlayerPrefab2;
 
   public override void OnJoinedRoom()
   {
@@ -19,7 +19,16 @@ public class NetworkPlayerSpawn : MonoBehaviourPunCallbacks
     // Debug.Log("Player spawned2");
   }
 
-  public override void OnLeftRoom()
+    //public override void OnPlayerEnteredRoom(Player newPlayer)
+    //{
+    //    base.OnPlayerEnteredRoom(newPlayer);
+    //    spawnedPlayerPrefab = PhotonNetwork.Instantiate("polo-with-bones", transform.position, transform.rotation);
+    //    Debug.Log("Player spawned");
+    //    // spawnedPlayerPrefab2 = PhotonNetwork.Instantiate("Polo2", transform.position, transform.rotation);
+    //    // Debug.Log("Player spawned2");
+    //}
+
+    public override void OnLeftRoom()
   {
     base.OnLeftRoom();
     PhotonNetwork.Destroy(spawnedPlayerPrefab);

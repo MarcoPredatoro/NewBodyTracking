@@ -4,6 +4,7 @@ using UnityEngine;
 using Microsoft.Azure.Kinect.BodyTracking;
 using System.Text;
 using Photon.Pun;
+using System;
 
 public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
 {
@@ -18,6 +19,8 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     // here we go
     [SerializeField]
     Dictionary<JointId, Quaternion> kinectRotationsMap;
+    [SerializeField]
+    Vector3 hipPosition;
 
     float OffsetY = 1;
     float OffsetZ = 1;
@@ -135,9 +138,11 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
                 if (j == 0)
                 {
                     finalJoint.position = CharacterRootTransform.position + new Vector3(RootPosition.transform.localPosition.x, RootPosition.transform.localPosition.y + OffsetY, RootPosition.transform.localPosition.z - OffsetZ);
+                    hipPosition = finalJoint.position;
 
                     // i'm just gonna
                     // put a photonTransformView on the hip bone
+                    // it didn't work lmao
                 }
 
                 // update the kinectRotationsMap i guess??
@@ -150,7 +155,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     {
         for (int j = 0; j < (int)JointId.Count; j++)
         {
-            if (MapKinectJoint((JointId)j) != HumanBodyBones.LastBone && absoluteOffsetMap.ContainsKey((JointId)j))
+            if (MapKinectJoint((JointId)j) != HumanBodyBones.LastBone)
             {
                 // just uhh
                 // set the values that come through the stream i guess?
@@ -158,6 +163,14 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
                 // get the transform of the hbb corresponding to the kinect joint in question
                 Transform finalJoint = PuppetAnimator.GetBoneTransform(MapKinectJoint((JointId)j));
                 finalJoint.rotation = kinectRotationsMap[(JointId)j];
+
+                if (j == 0)
+                {
+                    //finalJoint.position = GameObject.Find("polo-with-bones/polo_Reference/polo_Hips").GetComponent<Transform>().position;
+                    //Debug.Log("hips: " + finalJoint.position.ToString());
+                    finalJoint.position = hipPosition;
+
+                }
 
                 // do i even need to do the position? i assume photonTransformView will deal with this???
                 // but only if i put a photonTransformView on the hips
@@ -169,11 +182,13 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(kinectRotationsMap);
+            stream.SendNext(new Tuple<Dictionary<JointId, Quaternion>, Vector3>(kinectRotationsMap, hipPosition));
         }
         else if (stream.IsReading)
         {
-            kinectRotationsMap = (Dictionary<JointId, Quaternion>)stream.ReceiveNext();
+            Tuple<Dictionary<JointId, Quaternion>, Vector3> data = (Tuple<Dictionary<JointId, Quaternion>, Vector3>)stream.ReceiveNext();
+            kinectRotationsMap = data.Item1;
+            hipPosition = data.Item2;
             mapBonesFromPhoton();
         }
     }
