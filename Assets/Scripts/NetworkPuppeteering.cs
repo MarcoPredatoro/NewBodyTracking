@@ -116,6 +116,10 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
         {
             mapBonesFromKinect();
         }
+        else
+        {
+            mapBonesFromPhoton();
+        }
     }
 
     private void mapBonesFromKinect()
@@ -187,7 +191,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     { 
         if (stream.IsWriting)
         {
-            //Debug.Log("hips: " + hipPosition.ToString());
+            Debug.Log("hips: " + hipPosition.ToString());
             stream.SendNext(new object[] { kinectRotationsMap, hipPosition });
         }
         else if (stream.IsReading)
@@ -198,8 +202,8 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
             // wait
             // Quaternion -> object casts are valid and exist
             hipPosition = (Vector3)data[1];
-            mapBonesFromPhoton();
-            //Debug.Log("received hips: " + data[1].ToString());
+            //mapBonesFromPhoton();
+            Debug.Log("received hips: " + data[1].ToString());
         }
     }
 }

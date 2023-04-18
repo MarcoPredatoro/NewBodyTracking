@@ -51,7 +51,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log("New Player entered room");
+        Debug.Log("New Player entered! Count: " + PhotonNetwork.CurrentRoom.PlayerCount.ToString());
         base.OnPlayerEnteredRoom(newPlayer);
         Debug.Log("resetting points");
         RaiseEventOptions options = RaiseEventOptions.Default;
