@@ -22,8 +22,9 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     [SerializeField]
     Vector3 hipPosition;
 
-    float OffsetY = 1;
-    float OffsetZ = 1;
+    private const float OffsetY = 0.9f ;
+    private const float OffsetZ = 0;
+    private Quaternion Y_90_ROT = new Quaternion(0.00000f, 0.70711f, 0.00000f, 0.70711f);
 
     private static HumanBodyBones MapKinectJoint(JointId joint)
     {
@@ -128,14 +129,11 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
                 // get the absolute offset
                 Quaternion absOffset = absoluteOffsetMap[(JointId)j];
                 // calculate the new angle
-                Quaternion rot = absOffset * Quaternion.Inverse(absOffset) * KinectDevice.absoluteJointRotations[j] * absOffset;
+                Quaternion rot = Y_90_ROT * absOffset * Quaternion.Inverse(absOffset) * KinectDevice.absoluteJointRotations[j] * absOffset;
                 // OKAY THE ONLY THING THAT I CAN SERIALIZE ARE ARRAYS FINE
                 float[] cursedQuaternion = new float[4] { rot.x, rot.y, rot.z, rot.w };
                 // add THIS GODFORSAKEN STRUCTURE to the dictionary
                 kinectRotations[j] = cursedQuaternion; //changing JointId to int because JointIds can't be serialized
-                // converted to Vector3 with eulerAngles
-
-                // so it turns out Vector3s can't be serialized either
 
                 // get the transform of the hbb corresponding to the kinect joint in question
                 Transform finalJoint = PuppetAnimator.GetBoneTransform(MapKinectJoint((JointId)j));
@@ -176,11 +174,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
 
                 if (j == 0)
                 {
-                    //finalJoint.position = GameObject.Find("polo-with-bones/polo_Reference/polo_Hips").GetComponent<Transform>().position;
-                    //Debug.Log("hips: " + finalJoint.position.ToString());
-                    //Vector3 hipPos = new Vector3(hipPosition[0], hipPosition[1], hipPosition[2]);
                     finalJoint.position = hipPosition;
-
                 }
 
                 // do i even need to do the position? i assume photonTransformView will deal with this???
@@ -193,15 +187,19 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     { 
         if (stream.IsWriting)
         {
+            //Debug.Log("hips: " + hipPosition.ToString());
             stream.SendNext(new object[] { kinectRotationsMap, hipPosition });
         }
         else if (stream.IsReading)
         {
             object[] data = (object[])stream.ReceiveNext();
             kinectRotationsMap = (Dictionary<int, float[]>)data[0];
+            // this only works because you cast to an object earlier
+            // wait
+            // Quaternion -> object casts are valid and exist
             hipPosition = (Vector3)data[1];
             mapBonesFromPhoton();
-            Debug.Log("received hips: " + hipPosition.ToString());
+            //Debug.Log("received hips: " + data[1].ToString());
         }
     }
 }
