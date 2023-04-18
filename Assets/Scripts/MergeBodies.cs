@@ -36,8 +36,10 @@ public class MergeBodies : MonoBehaviour
                 // Calculate the location of the bodies in world space 
                 List<Tuple<Vector3,float>> location0 = m_tracker_0.GetComponent<TrackerHandler>().getLocations(m_lastFrameData0);
                 List<Tuple<Vector3,float>> location1 = m_tracker_1.GetComponent<TrackerHandler>().getLocations(m_lastFrameData1);
-                                   
+
+                // the tuple is (camera, body index)                 
                 List<Tuple<int, int>> bodies = new List<Tuple<int, int>>();
+                List<float> distances = new List<float>();
                 List<bool> isUsed = new List<bool>(new bool[location0.Count + location1.Count]);
                 
                 for (int i = 0; i < location0.Count; i++){
@@ -45,7 +47,21 @@ public class MergeBodies : MonoBehaviour
                         // Check how close the bodies are together
                         if(GetXZDistance(location0[i].Item1, location1[j].Item1) < SYNC_EPSILON && !isUsed[i] && !isUsed[location0.Count + j]) {
                             // Add to the bodies array the tracker and the body location that is closest to it's respective camera
-                            bodies.Add(location0[0].Item2 > location1[0].Item2 ? new Tuple<int, int>(0, i) : new Tuple<int, int>(1, j));
+                            var distance = Mathf.Min(location0[0].Item1.z, location1[0].Item2 );
+                            var body = location0[0].Item2 > location1[0].Item2 ? new Tuple<int, int>(0, i) : new Tuple<int, int>(1, j);
+                            
+                            if(bodies.Count == 0) {
+                                bodies.Add(body);
+                                distances.Add(distance);
+                            } else {
+                                for(int k = 0; k < distances.Count; k++){
+                                    if (distance < distances[k]){
+                                        bodies.Insert(k, body);
+                                        distances.Insert(k, distance);
+                                        break;
+                                    }
+                                }
+                            }
 
                             isUsed[i] = true;
                             isUsed[location0.Count + j] = true;
@@ -55,19 +71,42 @@ public class MergeBodies : MonoBehaviour
                 for (int i = 0; i < isUsed.Count; i++){
                     // If the body hasn't been used then add it to the array aswell
                     if (!isUsed[i]){
-                        bodies.Add(i < location0.Count ? new Tuple<int, int>(0,i) : new Tuple<int, int>(1,i - location0.Count));
+                        Tuple<int, int> body;
+                        float distance; 
+                        if (i < location0.Count){
+                            body = new Tuple<int, int>(0,i);
+                            distance = location0[i].Item1.z;
+                        } else {
+                            body = new Tuple<int, int>(1,i - location0.Count);
+                            distance = location1[i - location0.Count].Item1.z;
+                        }
+
+                        if(bodies.Count == 0) {
+                            bodies.Add(body);
+                            distances.Add(distance);
+                        } else {
+                            for(int k = 0; k < distances.Count; k++){
+                                if (distance < distances[k]){
+                                    bodies.Insert(k, body);
+                                    distances.Insert(k, distance);
+                                    break;
+                                }
+                            }
+                        }
+
                     }
+
                 }
 
-                foreach (var b in bodies){
+                for (int i = 0; i < (int)Mathf.Min(2, bodies.Count); i++){
                     // Add all the bodies to the return bodies to be rendered
-                    if(b.Item1 == 0) {
-                        returnBodies.Add(new Tuple<Body, GameObject>(m_lastFrameData0.Bodies[b.Item2], m_tracker_0));
+                    if(bodies[i].Item1 == 0) {
+                        returnBodies.Add(new Tuple<Body, GameObject>(m_lastFrameData0.Bodies[bodies[i].Item2], m_tracker_0));
                     } else {
-                        returnBodies.Add(new Tuple<Body, GameObject>(m_lastFrameData1.Bodies[b.Item2], m_tracker_1));
+                        returnBodies.Add(new Tuple<Body, GameObject>(m_lastFrameData1.Bodies[bodies[i].Item2], m_tracker_1));
                     }
                 }
-
+                Debug.Log(bodies.Count + " " + returnBodies.Count);
             }
         }
         return returnBodies;
