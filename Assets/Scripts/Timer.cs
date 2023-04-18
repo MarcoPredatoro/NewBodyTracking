@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
 
-    public Text timer;
-    private float time = 3 * 60;
+    private Text timer;
+    private float time = 10;
+    public GameObject gameOver;
+    public Points points;
 
-    private bool startTimer = false;
+    private bool startTimer = true;
     // Start is called before the first frame update
     void Start()
     {
+        timer = GetComponentInChildren<Text>();
         UpdateTimer();
     }
 
@@ -23,7 +26,8 @@ public class Timer : MonoBehaviour
             time -= Time.deltaTime;
             UpdateTimer();
         } else if (time < 0.0f){
-            timer.text = "Time Up!";
+            EndGame();
+            gameObject.SetActive(false);
         }
     }
 
@@ -38,5 +42,10 @@ public class Timer : MonoBehaviour
 
     public void StartTimer() {
         startTimer = !startTimer;
+    }
+
+    void EndGame() {
+        gameOver.SetActive(true);
+        gameOver.GetComponentInChildren<Text>().text = "The Winner is " + (points.getPoints() > points.threshold ? "Marco" : "Polo");
     }
 }
