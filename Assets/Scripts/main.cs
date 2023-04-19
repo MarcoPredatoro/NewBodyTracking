@@ -63,40 +63,14 @@ public class main : MonoBehaviour
     }
 
 
-/*
+    public void StartGame() {
+        GameObject.Find("networking").GetComponent<EventManager>().ResetPoints();
+        GetComponent<Points>().resetPoints();
+        GameObject.Find("Timer").GetComponent<Timer>().ResetTimer();
+        GameObject.Find("networking").GetComponent<EventManager>().SendGameStart();
 
-    Points System
-
-*/
-
-    // public int getPoints() {
-    //     // return points;
-    // }
-    public void updatePoints(int value) {
-        // points += value;
-        // pointsText.text = "Points: " + points.ToString();
+        
     }
-
-    private bool loseTimer = false;
-    public void losePoints(int value) {
-        // if (!loseTimer) {
-        //     loseTimer = true;
-        //     points -= value;
-        //     pointsText.text = "Points: " + points.ToString();
-        //     problemImage.color = new Color(255,0,0);
-        //     problemImage.material = problemMaterial;
-        //     StartCoroutine(turnBacktoWhite());
-
-        // }
-    }
-
-
-    // IEnumerator<WaitForSeconds> turnBacktoWhite() {
-    //     yield return new WaitForSeconds(5);
-    //     problemImage.material = reset;
-    //     problemImage.color = new Color(255,255,255);
-    //     loseTimer = false;
-    // }
 
 
 }

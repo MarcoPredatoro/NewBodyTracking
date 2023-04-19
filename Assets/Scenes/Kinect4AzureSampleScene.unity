@@ -16299,9 +16299,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 522368199}
-        m_TargetAssemblyTypeName: MarcoCalibration, Assembly-CSharp
-        m_MethodName: Syncronisation
+      - m_Target: {fileID: 522368195}
+        m_TargetAssemblyTypeName: main, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21855,7 +21855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &743734393
 RectTransform:
   m_ObjectHideFlags: 0
@@ -56549,7 +56549,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Reset Points:'
+  m_Text: 'Start Game:'
 --- !u!1 &1946588368
 GameObject:
   m_ObjectHideFlags: 0

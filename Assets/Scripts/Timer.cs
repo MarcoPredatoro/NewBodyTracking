@@ -7,11 +7,11 @@ public class Timer : MonoBehaviour
 {
 
     private Text timer;
-    private float time = 10;
+    private float time = 5 * 60;
     public GameObject gameOver;
     public Points points;
 
-    private bool startTimer = true;
+    private bool startTimer = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +25,9 @@ public class Timer : MonoBehaviour
         if (startTimer && time > 0.0f){
             time -= Time.deltaTime;
             UpdateTimer();
-        } else if (time < 0.0f){
+        } else if (startTimer && time < 0.0f){
             EndGame();
-            gameObject.SetActive(false);
+            StartTimer(false);
         }
     }
 
@@ -40,12 +40,18 @@ public class Timer : MonoBehaviour
 
     }
 
-    public void StartTimer() {
-        startTimer = !startTimer;
+    public void StartTimer(bool value) {
+        startTimer = value;
+    }
+
+    public void ResetTimer() {
+        time = 5 * 60;
+        StartTimer(true);
     }
 
     void EndGame() {
         gameOver.SetActive(true);
         gameOver.GetComponentInChildren<Text>().text = "The Winner is " + (points.getPoints() > points.threshold ? "Marco" : "Polo");
+        GameObject.Find("networking").GetComponent<EventManager>().SendGameOver();
     }
 }

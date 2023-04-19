@@ -14,7 +14,7 @@ public class Points : MonoBehaviour
     private Vector2 size;
 
     private float maxPoints = 100;
-    private float minPoints = 0;
+    private float minPoints = -100;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +68,7 @@ public class Points : MonoBehaviour
         points = 0;
         // pointsText.text = "Points: " + points.ToString();
         
-        minPoints = 0;
+        minPoints = -100;
         maxPoints = 100;
         updatePointsBar();
     }
