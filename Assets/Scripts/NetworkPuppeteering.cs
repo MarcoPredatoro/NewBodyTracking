@@ -11,7 +11,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     // we will have to set all of these in Start
     TrackerHandler KinectDevice;
     Animator PuppetAnimator;
-    //public string pointBody; // <--- you'll need this for multiple polos, maybe?
+    public string pointBody; // <--- you'll need this for multiple polos, maybe?
     GameObject RootPosition; // this is usually pelvis
     Transform CharacterRootTransform; // this is usually the transform of the gameobject the script is attached to
     PhotonView pv;
@@ -66,7 +66,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
         {
             KinectDevice = GameObject.Find("Kinect4AzureTracker").GetComponent<TrackerHandler>();
             // currently hardcoding the pointbody this belongs to
-            RootPosition = GameObject.Find("pointBody/pelvis");
+            RootPosition = GameObject.Find(pointBody + "/pelvis");
             CharacterRootTransform = GetComponent<Transform>();
 
             // there is definitely a case to be made for increasing the transmission rate from 10Hz, but oh well

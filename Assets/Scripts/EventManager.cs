@@ -14,6 +14,7 @@ public class EventManager : MonoBehaviour
     private const byte RESET_POINTS_EVENT = 3;
     private const byte SEQUENCE_GENERATED_EVENT = 4;
     private const byte SEQUENCE_COMPLETED_EVENT = 5;
+    private const byte GAME_OVER_EVENT = 7;
     public Points points;
 
     public void IncrementPointsByRFID(int numberOfPoints)
@@ -101,6 +102,11 @@ public class EventManager : MonoBehaviour
             // open the box and generate a new sequence?
             points.updatePoints(20);
             GenerateSequence(4, 4);
+        }
+        else if (obj.Code == GAME_OVER_EVENT)
+        {
+            Debug.Log("GAME OVER");
+            ResetPoints();
         }
     }
 }

@@ -5976,11 +5976,8 @@ GameObject:
   - component: {fileID: 2450703715360283400}
   - component: {fileID: 2450703715360283403}
   - component: {fileID: 2450703715360283402}
-  - component: {fileID: 2450703715360283405}
   - component: {fileID: 2450703715360283404}
   - component: {fileID: 2450703715360283407}
-  - component: {fileID: 2450703715360283398}
-  - component: {fileID: 2450703715360283399}
   m_Layer: 0
   m_Name: polo-with-bones
   m_TagString: Untagged
@@ -6046,7 +6043,6 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2450703715360283402}
-  - {fileID: 2450703715360283405}
   - {fileID: 2450703715360283407}
   sceneViewId: 0
   InstantiationId: 0
@@ -6067,22 +6063,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &2450703715360283405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2450703715360283406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 0
-  ShowParameterInspector: 0
-  m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
 --- !u!136 &2450703715360283404
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6109,38 +6089,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1593c7054163ca7479959aea264e4d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointBody: pointBody
   hipPosition: {x: 0, y: 0, z: 0}
---- !u!114 &2450703715360283398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2450703715360283406}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8032e1988326f344fa4dee73ee79cb63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KinectDevice: {fileID: 0}
-  RootPosition: {fileID: 0}
-  CharacterRootTransform: {fileID: 2450703715360283401}
-  OffsetY: 1
-  OffsetZ: 1
---- !u!114 &2450703715360283399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2450703715360283406}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dded80134726ce24b85bead2ad3cdd37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bone: 
-  pointBody: 
 --- !u!1 &2450703715377092441
 GameObject:
   m_ObjectHideFlags: 0
