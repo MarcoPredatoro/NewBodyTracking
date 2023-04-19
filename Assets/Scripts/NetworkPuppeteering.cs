@@ -22,6 +22,9 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     [SerializeField]
     Vector3 hipPosition;
 
+    // using mergebodies
+    MergeBodies mergebodies;
+
     private const float OffsetY = 0.9f ;
     private const float OffsetZ = 0;
     private Quaternion Y_90_ROT = new Quaternion(0.00000f, 0.70711f, 0.00000f, 0.70711f);
@@ -65,9 +68,10 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
         if (pv.IsMine)
         {
             KinectDevice = GameObject.Find("Kinect4AzureTracker").GetComponent<TrackerHandler>();
-            // currently hardcoding the pointbody this belongs to
             RootPosition = GameObject.Find(pointBody + "/pelvis");
             CharacterRootTransform = GetComponent<Transform>();
+
+            mergebodies = GameObject.Find("MergedBodyTracker").GetComponent<MergeBodies>();
 
             // there is definitely a case to be made for increasing the transmission rate from 10Hz, but oh well
 
@@ -114,12 +118,20 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     {
         if (pv.IsMine)
         {
-            mapBonesFromKinect();
+            //mapBonesFromKinect();
+            mapBonesFromMergeBodies();
         }
         else
         {
             mapBonesFromPhoton();
         }
+    }
+
+    private void mapBonesFromMergeBodies()
+    {
+        kinectRotationsMap = mergebodies.rotationsMap;
+        hipPosition = mergebodies.pelvisPosition;
+        mapBonesFromPhoton();
     }
 
     private void mapBonesFromKinect()
@@ -202,7 +214,6 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
             // wait
             // Quaternion -> object casts are valid and exist
             hipPosition = (Vector3)data[1];
-            //mapBonesFromPhoton();
             Debug.Log("received hips: " + data[1].ToString());
         }
     }

@@ -16,6 +16,10 @@ public class MergeBodies : MonoBehaviour
 
     public Quaternion Y_180_FLIP = new Quaternion(0.00000f, 0.70711f, 0.00000f, 0.70711f);
 
+    // animator stuff
+    public Dictionary<int, float[]> rotationsMap;
+    public Vector3 pelvisPosition;
+
     public void renderSkeletons(SkeletalTrackingProvider m_skeletalTrackingProvider, SkeletalTrackingProvider m_skeletalTrackingProvider1) {
         var bodies = getBodies(m_skeletalTrackingProvider, m_skeletalTrackingProvider1);
 
@@ -122,6 +126,8 @@ public class MergeBodies : MonoBehaviour
 
         // Debug.Log(transform.GetChild(skeletonNumber).GetChild(0).GetChild(0).name);
 
+        Dictionary<int, float[]> kinectRotations = new Dictionary<int, float[]>();
+
         for (int jointNum = 0; jointNum < (int)JointId.Count; jointNum++)
         {
             Vector3 jointPos = new Vector3(skeleton.JointPositions3D[jointNum].X, -skeleton.JointPositions3D[jointNum].Y, skeleton.JointPositions3D[jointNum].Z);
@@ -129,6 +135,9 @@ public class MergeBodies : MonoBehaviour
             Vector3 positionInTrackerRootSpace = transform.GetChild(skeletonNumber).position + offsetPosition;
             Quaternion jointRot = Y_180_FLIP * new Quaternion(skeleton.JointRotations[jointNum].X, skeleton.JointRotations[jointNum].Y,
                 skeleton.JointRotations[jointNum].Z, skeleton.JointRotations[jointNum].W) * Quaternion.Inverse(tracker.basisJointMap[(JointId)jointNum]);
+
+            float[] cursedQuaternion = new float[4] { jointRot.x, jointRot.y, jointRot.z, jointRot.w };
+            kinectRotations[jointNum] = cursedQuaternion;
 
             // these are absolute body space because each joint has the body root for a parent in the scene graph
             transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).localPosition = jointPos;
