@@ -1,0 +1,1372 @@
+fileFormatVersion: 2
+guid: 089e321532a0c144db1c89251c35d7ef
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 1
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: polo_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandThumb1
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandThumb2
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandThumb3
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandMiddle1
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandMiddle2
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandMiddle3
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandRing1
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandRing2
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandRing3
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandPinky1
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandPinky2
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_LeftHandPinky3
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandThumb1
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandThumb2
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandThumb3
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandMiddle1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandMiddle2
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandMiddle3
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandRing1
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandRing2
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandRing3
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandPinky1
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandPinky2
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_RightHandPinky3
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: polo_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: polo-with-bones(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: group1
+      parentName: polo-with-bones(Clone)
+      position: {x: -0, y: 0.9, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9, y: 0.9, z: 0.9}
+    - name: armour_belt
+      parentName: group1
+      position: {x: 0.0046609845, y: -0.052287072, z: -0.017177733}
+      rotation: {x: 0.00000008146034, y: -0, z: -0, w: 1}
+      scale: {x: 100, y: 115.09595, z: 114.1428}
+    - name: armour_chest
+      parentName: group1
+      position: {x: -1.4153748e-15, y: -0.0000010172525, z: 0}
+      rotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: armour_leftarm
+      parentName: group1
+      position: {x: -0.7987283, y: 0.27598318, z: -0.036312636}
+      rotation: {x: 0.031029869, y: -0.040438607, z: -0.6079701, w: 0.79232204}
+      scale: {x: 100, y: 100, z: 100}
+    - name: armour_leftknee
+      parentName: group1
+      position: {x: 0.0056928173, y: 0.017820042, z: 0.00000025289756}
+      rotation: {x: -0.00000525113, y: 0.0000004736138, z: 0.087155744, w: 0.9961947}
+      scale: {x: 100, y: 100, z: 100}
+    - name: armour_leftleg
+      parentName: group1
+      position: {x: 0.0056928173, y: 0.017820042, z: 0.00000025289756}
+      rotation: {x: -0.00000525113, y: 0.0000004736138, z: 0.087155744, w: 0.9961947}
+      scale: {x: 100, y: 100, z: 100}
+    - name: armour_leftshoulder
+      parentName: group1
+      position: {x: -0.7528317, y: 0.27599564, z: -0.01944275}
+      rotation: {x: 0.010639936, y: -0.013856479, z: -0.6086773, w: 0.7932255}
+      scale: {x: 100, y: 100, z: 100}
+    - name: armour_rightarm
+      parentName: group1
+      position: {x: 0.79689384, y: 0.27598533, z: -0.045725107}
+      rotation: {x: 0.042465094, y: 0.05534049, z: 0.6072786, w: 0.7914209}
+      scale: {x: 100, y: 100, z: 100}
+    - name: armour_rightknee
+      parentName: group1
+      position: {x: -0.0056928173, y: 0.017820042, z: 0.00000025279348}
+      rotation: {x: -0.000005248935, y: -0.00000047342178, z: -0.087155744, w: 0.9961947}
+      scale: {x: 100, y: 100, z: 100}
+    - name: armour_rightleg
+      parentName: group1
+      position: {x: -0.0056928173, y: 0.017820042, z: 0.00000025279348}
+      rotation: {x: -0.000005248935, y: -0.00000047342178, z: -0.087155744, w: 0.9961947}
+      scale: {x: 100, y: 100, z: 100}
+    - name: armour_rightshoulder
+      parentName: group1
+      position: {x: 0.752835, y: 0.27599776, z: -0.01944334}
+      rotation: {x: 0.010640437, y: 0.01385618, z: 0.6086773, w: 0.7932255}
+      scale: {x: 100, y: 100, z: 100}
+    - name: bodysuit
+      parentName: group1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: head
+      parentName: group1
+      position: {x: -2.160317e-15, y: -0.0000010172525, z: 0}
+      rotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: armour_face
+      parentName: head
+      position: {x: -0.0000026582088, y: 0.00836622, z: 0.00075225986}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.8279283, y: 0.8279283, z: 0.91518885}
+    - name: tank
+      parentName: group1
+      position: {x: -4.717937e-16, y: -0.0000007629394, z: 0}
+      rotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
+      scale: {x: 100, y: 100, z: 100}
+    - name: polo_Ctrl_Reference
+      parentName: polo-with-bones(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_ChestEndEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.0000000047683715, y: 1.4658854, z: 0}
+      rotation: {x: 3.061617e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_ChestOriginEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0, y: 1.0699999, z: 0}
+      rotation: {x: 3.061617e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_HeadEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0, y: 1.65, z: 0}
+      rotation: {x: 3.061617e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_Hips
+      parentName: polo_Ctrl_Reference
+      position: {x: -0, y: 1, z: 0}
+      rotation: {x: 3.061617e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftUpLeg
+      parentName: polo_Ctrl_Hips
+      position: {x: -0.089100026, y: -0.062700056, z: 0}
+      rotation: {x: -3.061617e-17, y: 6.162976e-33, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftLeg
+      parentName: polo_Ctrl_LeftUpLeg
+      position: {x: -0, y: -0.4487865, z: 0}
+      rotation: {x: -3.061617e-17, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftFoot
+      parentName: polo_Ctrl_LeftLeg
+      position: {x: -0, y: -0.4070097, z: 0}
+      rotation: {x: 9.385498e-17, y: 6.6369796e-18, z: 4.9646253e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftToeBase
+      parentName: polo_Ctrl_LeftFoot
+      position: {x: -0.000000085830706, y: -0.06262319, z: 0.12954722}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightUpLeg
+      parentName: polo_Ctrl_Hips
+      position: {x: 0.089100026, y: -0.062700056, z: 0}
+      rotation: {x: -8.0883567e-17, y: 1.4413854e-16, z: 5.2459358e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightLeg
+      parentName: polo_Ctrl_RightUpLeg
+      position: {x: 0.000000028610236, y: -0.4487865, z: 0.000004390241}
+      rotation: {x: -5.837175e-17, y: -8.326673e-17, z: 1.3877788e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightFoot
+      parentName: polo_Ctrl_RightLeg
+      position: {x: -0.000000009536746, y: -0.4070097, z: 0}
+      rotation: {x: -5.5479934e-18, y: 1.3568113e-16, z: 1.889019e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightToeBase
+      parentName: polo_Ctrl_RightFoot
+      position: {x: 0.000010852816, y: -0.06262319, z: 0.12954752}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_Spine
+      parentName: polo_Ctrl_Hips
+      position: {x: -0, y: 0.070000015, z: 0}
+      rotation: {x: 3.061617e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_Spine1
+      parentName: polo_Ctrl_Spine
+      position: {x: -0, y: 0.12666667, z: 0}
+      rotation: {x: 3.061617e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_Spine2
+      parentName: polo_Ctrl_Spine1
+      position: {x: -0, y: 0.12666667, z: 0}
+      rotation: {x: 3.061617e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftShoulder
+      parentName: polo_Ctrl_Spine2
+      position: {x: -0.07000002, y: 0.14255223, z: 0}
+      rotation: {x: 0, y: -0, z: -1.6940659e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftArm
+      parentName: polo_Ctrl_LeftShoulder
+      position: {x: -0.107072525, y: 0.0000013732913, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftForeArm
+      parentName: polo_Ctrl_LeftArm
+      position: {x: -0.27305472, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHand
+      parentName: polo_Ctrl_LeftForeArm
+      position: {x: -0.2669715, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandIndex1
+      parentName: polo_Ctrl_LeftHand
+      position: {x: -0.08821978, y: 0.0019972234, z: 0.0347167}
+      rotation: {x: -1.2239036e-16, y: 3.469447e-18, z: -3.4726374e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandIndex2
+      parentName: polo_Ctrl_LeftHandIndex1
+      position: {x: -0.042227563, y: -0.00000015258793, z: 0.0014719894}
+      rotation: {x: -1.2238226e-16, y: -6.938894e-18, z: 4.263192e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandIndex3
+      parentName: polo_Ctrl_LeftHandIndex2
+      position: {x: -0.026523292, y: -0.00000015258793, z: 0.00092456123}
+      rotation: {x: -2.646978e-23, y: -3.469447e-18, z: 3.0109374e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandIndex4
+      parentName: polo_Ctrl_LeftHandIndex3
+      position: {x: -0.019570317, y: -0.00000015258793, z: 0.0006821896}
+      rotation: {x: 1.2239041e-16, y: -1.0408341e-17, z: -4.264977e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandMiddle1
+      parentName: polo_Ctrl_LeftHand
+      position: {x: -0.08809885, y: 0.005008851, z: 0.013046848}
+      rotation: {x: -1.2246469e-16, y: -4.6633244e-37, z: 3.8078932e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandMiddle2
+      parentName: polo_Ctrl_LeftHandMiddle1
+      position: {x: -0.048632517, y: 0, z: 0.0000030243402}
+      rotation: {x: -1.2246469e-16, y: -4.658366e-37, z: 3.8038446e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandMiddle3
+      parentName: polo_Ctrl_LeftHandMiddle2
+      position: {x: -0.027652366, y: 2.842171e-16, z: 0.0000017178063}
+      rotation: {x: -1.2246469e-16, y: -4.6219967e-37, z: 3.774147e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandMiddle4
+      parentName: polo_Ctrl_LeftHandMiddle3
+      position: {x: -0.02005631, y: 0, z: 0.0000012362005}
+      rotation: {x: 6.123234e-17, y: -9.958397e-17, z: 6.1228564e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandPinky1
+      parentName: polo_Ctrl_LeftHand
+      position: {x: -0.088822804, y: -0.0031303414, z: -0.02490357}
+      rotation: {x: -1.2246469e-16, y: 9.207963e-22, z: 1.6940659e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandPinky2
+      parentName: polo_Ctrl_LeftHandPinky1
+      position: {x: -0.030440986, y: 0.00000045776378, z: -4.440892e-18}
+      rotation: {x: 8.077936e-28, y: 5.293956e-23, z: 2.5289815e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandPinky3
+      parentName: polo_Ctrl_LeftHandPinky2
+      position: {x: -0.01974503, y: 0.00000030517586, z: -0.0000000023841864}
+      rotation: {x: 4.038968e-28, y: 5.293956e-23, z: -3.1268881e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandPinky4
+      parentName: polo_Ctrl_LeftHandPinky3
+      position: {x: -0.01666611, y: 0.00000015258793, z: 0.000000009536746}
+      rotation: {x: 6.123132e-17, y: -1.1157166e-16, z: 6.123231e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandRing1
+      parentName: polo_Ctrl_LeftHand
+      position: {x: -0.088937625, y: 0.0037991342, z: -0.00793159}
+      rotation: {x: -1.2246469e-16, y: -9.8499e-41, z: 8.043029e-25, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandRing2
+      parentName: polo_Ctrl_LeftHandRing1
+      position: {x: -0.045377586, y: 0, z: 5.960466e-10}
+      rotation: {x: -1.2325952e-32, y: 6.617445e-24, z: -3.1674452e-24, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandRing3
+      parentName: polo_Ctrl_LeftHandRing2
+      position: {x: -0.023045277, y: 0, z: -0.0000000011920932}
+      rotation: {x: 1e-45, y: 2.646978e-23, z: -2.656631e-23, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandRing4
+      parentName: polo_Ctrl_LeftHandRing3
+      position: {x: -0.019233478, y: 0, z: -0.000000008344652}
+      rotation: {x: 6.123234e-17, y: -9.957989e-17, z: 6.123237e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandThumb1
+      parentName: polo_Ctrl_LeftHand
+      position: {x: -0.043487635, y: -0.007985079, z: 0.04282435}
+      rotation: {x: 1.110223e-16, y: -1.2143064e-17, z: 1.3877788e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandThumb2
+      parentName: polo_Ctrl_LeftHandThumb1
+      position: {x: -0.025125891, y: -0.0053608716, z: 0.0070745437}
+      rotation: {x: -1.110223e-16, y: -7.5999324e-22, z: -8.4703295e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandThumb3
+      parentName: polo_Ctrl_LeftHandThumb2
+      position: {x: -0.025431372, y: -0.00000015258793, z: 0.00000009536745}
+      rotation: {x: 2.5e-44, y: 2.1175824e-22, z: -1.1869291e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandThumb4
+      parentName: polo_Ctrl_LeftHandThumb3
+      position: {x: -0.026667487, y: 2.842171e-16, z: -0.00000008106233}
+      rotation: {x: 3.6977855e-32, y: -2.3935393e-16, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_Neck
+      parentName: polo_Ctrl_Spine2
+      position: {x: -0, y: 0.12666674, z: 0}
+      rotation: {x: 3.061617e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_Head
+      parentName: polo_Ctrl_Neck
+      position: {x: -0, y: 0.20000005, z: 0}
+      rotation: {x: 3.061617e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightShoulder
+      parentName: polo_Ctrl_Spine2
+      position: {x: 0.070000015, y: 0.14255223, z: 0}
+      rotation: {x: 0, y: 0, z: 6.7762636e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightArm
+      parentName: polo_Ctrl_RightShoulder
+      position: {x: 0.10707278, y: 0.000004272462, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightForeArm
+      parentName: polo_Ctrl_RightArm
+      position: {x: 0.27305603, y: 5.684342e-16, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHand
+      parentName: polo_Ctrl_RightForeArm
+      position: {x: 0.26696992, y: 0, z: 0}
+      rotation: {x: -1.2325952e-32, y: 6.123234e-17, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandIndex1
+      parentName: polo_Ctrl_RightHand
+      position: {x: 0.08821672, y: 0.0019973759, z: 0.034724448}
+      rotation: {x: -2.135384e-18, y: -6.938894e-18, z: 7.451356e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandIndex2
+      parentName: polo_Ctrl_RightHandIndex1
+      position: {x: 0.042227563, y: -2.842171e-16, z: -0.0014735177}
+      rotation: {x: -2.1353901e-18, y: -1.5911644e-37, z: 7.4513993e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandIndex3
+      parentName: polo_Ctrl_RightHandIndex2
+      position: {x: 0.026523216, y: 2.842171e-16, z: -0.00092552206}
+      rotation: {x: -2.1353912e-18, y: 3.469447e-18, z: 7.451407e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandIndex4
+      parentName: polo_Ctrl_RightHandIndex3
+      position: {x: 0.019570317, y: -2.842171e-16, z: -0.00068290246}
+      rotation: {x: 0, y: 3.469447e-18, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandMiddle1
+      parentName: polo_Ctrl_RightHand
+      position: {x: 0.08809771, y: 0.005009004, z: 0.013054588}
+      rotation: {x: -2.1353885e-18, y: -1.5911608e-37, z: 7.451388e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandMiddle2
+      parentName: polo_Ctrl_RightHandMiddle1
+      position: {x: 0.048602913, y: -2.842171e-16, z: -0.0016959874}
+      rotation: {x: -2.1353874e-18, y: -1.5911584e-37, z: 7.4513806e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandMiddle3
+      parentName: polo_Ctrl_RightHandMiddle2
+      position: {x: 0.027635582, y: -2.842171e-16, z: -0.0009643366}
+      rotation: {x: -2.135389e-18, y: -6.938894e-18, z: 7.4513916e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandMiddle4
+      parentName: polo_Ctrl_RightHandMiddle3
+      position: {x: 0.020044101, y: -2.842171e-16, z: -0.00069943443}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandPinky1
+      parentName: polo_Ctrl_RightHand
+      position: {x: 0.088824935, y: -0.003130189, z: -0.024895746}
+      rotation: {x: -1.1935224e-18, y: -4.915758e-38, z: 4.1186977e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandPinky2
+      parentName: polo_Ctrl_RightHandPinky1
+      position: {x: 0.030459449, y: -0.0000007629396, z: -0.001062875}
+      rotation: {x: -2.727499e-18, y: 6.938894e-18, z: 2.2213736e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandPinky3
+      parentName: polo_Ctrl_RightHandPinky2
+      position: {x: 0.019757008, y: -0.00000030517586, z: -0.0006894137}
+      rotation: {x: 3.2619239e-18, y: -3.6953471e-37, z: -1.1328735e-19, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandPinky4
+      parentName: polo_Ctrl_RightHandPinky3
+      position: {x: 0.016676258, y: -0.00000045776378, z: -0.0005819131}
+      rotation: {x: 2.1175824e-22, y: 6.938894e-18, z: -4.35097e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandRing1
+      parentName: polo_Ctrl_RightHand
+      position: {x: 0.08893831, y: 0.0037992867, z: -0.007923769}
+      rotation: {x: -2.1353852e-18, y: -1.5911536e-37, z: 7.451366e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandRing2
+      parentName: polo_Ctrl_RightHandRing1
+      position: {x: 0.045350045, y: 0, z: -0.0015824769}
+      rotation: {x: -2.1353905e-18, y: -1.5911652e-37, z: 7.451402e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandRing3
+      parentName: polo_Ctrl_RightHandRing2
+      position: {x: 0.023031238, y: -2.842171e-16, z: -0.0008036705}
+      rotation: {x: -2.135382e-18, y: -6.938894e-18, z: 7.4513425e-20, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandRing4
+      parentName: polo_Ctrl_RightHandRing3
+      position: {x: 0.019221807, y: 0, z: -0.00067073834}
+      rotation: {x: 0, y: 6.938894e-18, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandThumb1
+      parentName: polo_Ctrl_RightHand
+      position: {x: 0.04348382, y: -0.007984926, z: 0.042828154}
+      rotation: {x: -2.0816682e-16, y: 7.892992e-17, z: -6.938894e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandThumb2
+      parentName: polo_Ctrl_RightHandThumb1
+      position: {x: 0.025125282, y: -0.005361024, z: 0.0070767705}
+      rotation: {x: 5.98217e-20, y: 6.18014e-17, z: -1.7330294e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandThumb3
+      parentName: polo_Ctrl_RightHandThumb2
+      position: {x: 0.025415884, y: 0.00000030517586, z: 0.0008882048}
+      rotation: {x: -6.06555e-20, y: 7.580703e-18, z: 1.7338764e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandThumb4
+      parentName: polo_Ctrl_RightHandThumb3
+      position: {x: 0.026651237, y: 0.00000015258793, z: 0.00093137287}
+      rotation: {x: -2.219904e-16, y: -2.8286154e-18, z: -8.367415e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_HipsEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0, y: 0.9372999, z: 0}
+      rotation: {x: 3.061617e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftAnkleEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.0891, y: 0.081503965, z: 0}
+      rotation: {x: 9.385498e-17, y: 6.6369796e-18, z: 4.9646253e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftElbowEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.45012718, y: 1.4658868, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftFootEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.08910009, y: 0.018880792, z: 0.12954721}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandIndexEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.8936395, y: 1.4678836, z: 0.037795432}
+      rotation: {x: 1.2239041e-16, y: -1.0408341e-17, z: -4.264977e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandMiddleEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.9015386, y: 1.4708956, z: 0.013052822}
+      rotation: {x: 6.123234e-17, y: -9.958397e-17, z: 6.1228564e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandPinkyEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.87277347, y: 1.4627573, z: -0.024903556}
+      rotation: {x: 6.123132e-17, y: -1.1157166e-16, z: 6.123231e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandRingEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.89369255, y: 1.4696859, z: -0.0079315975}
+      rotation: {x: 6.123234e-17, y: -9.957989e-17, z: 6.123237e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHandThumbEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.83781093, y: 1.4525408, z: 0.049898896}
+      rotation: {x: 3.6977855e-32, y: -2.3935393e-16, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftHipEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.0891, y: 0.9372999, z: 0}
+      rotation: {x: -3.061617e-17, y: 6.162976e-33, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftKneeEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.0891, y: 0.48851356, z: 0}
+      rotation: {x: -3.061617e-17, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftShoulderEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.1770725, y: 1.4658868, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_LeftWristEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: -0.7170986, y: 1.4658868, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightAnkleEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.089100026, y: 0.081503965, z: 0.00000439024}
+      rotation: {x: -5.5479934e-18, y: 1.3568113e-16, z: 1.889019e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightElbowEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.45012873, y: 1.4658897, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightFootEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.08911088, y: 0.018880792, z: 0.12955187}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandIndexEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.8936364, y: 1.467887, z: 0.0316425}
+      rotation: {x: 0, y: 3.469447e-18, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandMiddleEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.9014789, y: 1.4708987, z: 0.009694827}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandPinkyEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.8728162, y: 1.462758, z: -0.027229942}
+      rotation: {x: 2.1175824e-22, y: 6.938894e-18, z: -4.35097e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandRingEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.89364, y: 1.469689, z: -0.010980653}
+      rotation: {x: 0, y: 6.938894e-18, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHandThumbEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.8377748, y: 1.4525442, z: 0.05172449}
+      rotation: {x: -2.219904e-16, y: -2.8286154e-18, z: -8.367415e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightHipEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.0891, y: 0.9372999, z: 0}
+      rotation: {x: -8.0883567e-17, y: 1.4413854e-16, z: 5.2459358e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightKneeEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.08910003, y: 0.48851356, z: 0.00000439024}
+      rotation: {x: -5.837175e-17, y: -8.326673e-17, z: 1.3877788e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightShoulderEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.17707275, y: 1.4658897, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Ctrl_RightWristEffector
+      parentName: polo_Ctrl_Reference
+      position: {x: 0.7170986, y: 1.4658897, z: 0}
+      rotation: {x: -1.2325952e-32, y: 6.123234e-17, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Reference
+      parentName: polo-with-bones(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Hips
+      parentName: polo_Reference
+      position: {x: -0, y: 0.9999993, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftUpLeg
+      parentName: polo_Hips
+      position: {x: -0.089099914, y: -0.06270004, z: 0}
+      rotation: {x: -0.0000053526487, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftLeg
+      parentName: polo_LeftUpLeg
+      position: {x: -0.0000000667572, y: -0.44878572, z: -0.0000048043844}
+      rotation: {x: 0.000003668818, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftFoot
+      parentName: polo_LeftLeg
+      position: {x: -0.000000019073486, y: -0.40700954, z: -0.0000013706704}
+      rotation: {x: 0.0000016838308, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftToeBase
+      parentName: polo_LeftFoot
+      position: {x: -0.000000085830685, y: -0.062623106, z: 0.12954707}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightUpLeg
+      parentName: polo_Hips
+      position: {x: 0.089099914, y: -0.06270004, z: 0}
+      rotation: {x: -0.0000053504455, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightLeg
+      parentName: polo_RightUpLeg
+      position: {x: 0.000000095367426, y: -0.44878572, z: -0.0000004121706}
+      rotation: {x: 0.000003666613, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightFoot
+      parentName: polo_RightLeg
+      position: {x: 0.000000009536743, y: -0.40700954, z: -0.000001370668}
+      rotation: {x: 0.0000016838321, y: 0.000041891275, z: -7.0537874e-11, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightToeBase
+      parentName: polo_RightFoot
+      position: {x: -9.768596e-10, y: -0.062623106, z: 0.12954736}
+      rotation: {x: 0.00002541717, y: -0.000041891275, z: 0.0000000010647576, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Spine
+      parentName: polo_Hips
+      position: {x: -0, y: 0.07, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Spine1
+      parentName: polo_Spine
+      position: {x: -4.246143e-16, y: 0.12666664, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Spine2
+      parentName: polo_Spine1
+      position: {x: -4.246143e-16, y: 0.12666656, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftShoulder
+      parentName: polo_Spine2
+      position: {x: -0.069999985, y: 0.14255218, z: 0}
+      rotation: {x: 0, y: -0, z: -0.0000064165465, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftArm
+      parentName: polo_LeftShoulder
+      position: {x: -0.107072294, y: -7.7769524e-10, z: 0}
+      rotation: {x: 0.0000058859673, y: -0.00001778456, z: 0.0000018658235, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftForeArm
+      parentName: polo_LeftArm
+      position: {x: -0.27305436, y: -0.0000024851324, z: 0.000009712338}
+      rotation: {x: -0.000005945462, y: 0.00001866968, z: 0.000004550719, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHand
+      parentName: polo_LeftForeArm
+      position: {x: -0.2669712, y: 4.3485215e-14, z: -0.00000047258283}
+      rotation: {x: 0, y: -0.00000088508204, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandIndex1
+      parentName: polo_LeftHand
+      position: {x: -0.088219754, y: 0.0019972187, z: 0.03471668}
+      rotation: {x: -0.00000004562626, y: 0.017452408, z: 0.0000026139264, w: 0.9998477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandIndex2
+      parentName: polo_LeftHandIndex1
+      position: {x: -0.042253204, y: 0.000000068029706, z: -0.0000026256764}
+      rotation: {x: 0.000000045698933, y: -0.017452408, z: -0.0000026139253, w: 0.9998477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandIndex3
+      parentName: polo_LeftHandIndex2
+      position: {x: -0.026523285, y: -0.00000015269798, z: 0.000924561}
+      rotation: {x: -9.5500185e-18, y: -1.7347235e-17, z: 2.7347348e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandIndex4
+      parentName: polo_LeftHandIndex3
+      position: {x: -0.019570312, y: -0.0000001526691, z: 0.0006821894}
+      rotation: {x: -3.869511e-18, y: -1.0408341e-17, z: 1.10808427e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandMiddle1
+      parentName: polo_LeftHand
+      position: {x: -0.08809883, y: 0.0050088484, z: 0.013046839}
+      rotation: {x: 0, y: 0.000031095955, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandMiddle2
+      parentName: polo_LeftHandMiddle1
+      position: {x: -0.048632506, y: -3.527134e-13, z: -2.088473e-10}
+      rotation: {x: -2.6339298e-26, y: -0.00003109596, z: 8.4703295e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandMiddle3
+      parentName: polo_LeftHandMiddle2
+      position: {x: -0.027652359, y: -1.9980461e-13, z: 0.000001717806}
+      rotation: {x: 8.78177e-40, y: -1.0096633e-18, z: 8.4703295e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandMiddle4
+      parentName: polo_LeftHandMiddle3
+      position: {x: -0.020056304, y: -1.4438228e-13, z: 0.0000012362004}
+      rotation: {x: -1.0445714e-37, y: 1.2333477e-16, z: 8.4703295e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandPinky1
+      parentName: polo_LeftHand
+      position: {x: -0.08882278, y: -0.0031303375, z: -0.024903549}
+      rotation: {x: 0, y: -0, z: -0.000006658659, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandPinky2
+      parentName: polo_LeftHandPinky1
+      position: {x: -0.030440979, y: 0.000000052371487, z: 5.456968e-14}
+      rotation: {x: 0, y: 0, z: 0.000006867702, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandPinky3
+      parentName: polo_LeftHandPinky2
+      position: {x: -0.019745026, y: 0.0000003134309, z: -0.0000000023841493}
+      rotation: {x: 0, y: 0, z: 6.1870675e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandPinky4
+      parentName: polo_LeftHandPinky3
+      position: {x: -0.016666107, y: 0.00000015955577, z: 0.000000009536761}
+      rotation: {x: 0, y: 0, z: 5.5812695e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandRing1
+      parentName: polo_LeftHand
+      position: {x: -0.0889376, y: 0.0037991342, z: -0.007931585}
+      rotation: {x: 0, y: 0.000031097657, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandRing2
+      parentName: polo_LeftHandRing1
+      position: {x: -0.0453775, y: 7.389644e-15, z: -0.0000028216718}
+      rotation: {x: -2.634074e-26, y: -0.000031097657, z: 8.4703295e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandRing3
+      parentName: polo_LeftHandRing2
+      position: {x: -0.023045272, y: 3.694822e-15, z: -0.0000000011920935}
+      rotation: {x: -1.762094e-39, y: 2.0125503e-18, z: 8.4703295e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandRing4
+      parentName: polo_LeftHandRing3
+      position: {x: -0.019233475, y: 3.9790393e-15, z: -0.00000000834465}
+      rotation: {x: -1.0310256e-37, y: 1.2169492e-16, z: 8.4703295e-22, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandThumb1
+      parentName: polo_LeftHand
+      position: {x: -0.043487623, y: -0.007985082, z: 0.04282431}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandThumb2
+      parentName: polo_LeftHandThumb1
+      position: {x: -0.025125884, y: -0.0053608706, z: 0.0070745316}
+      rotation: {x: 0, y: 0, z: 0.0000025993363, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandThumb3
+      parentName: polo_LeftHandThumb2
+      position: {x: -0.025431441, y: -0.00000002037815, z: 0.00000009536741}
+      rotation: {x: 0, y: -0, z: -0.0000051986726, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_LeftHandThumb4
+      parentName: polo_LeftHandThumb3
+      position: {x: -0.02666748, y: -0.00000013863547, z: -0.00000008106232}
+      rotation: {x: 0, y: 0, z: 0.0000025993363, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Neck
+      parentName: polo_Spine2
+      position: {x: -4.2460872e-16, y: 0.12666656, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_Head
+      parentName: polo_Neck
+      position: {x: -6.7044797e-16, y: 0.19999999, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightShoulder
+      parentName: polo_Spine2
+      position: {x: 0.06999998, y: 0.14255218, z: 0}
+      rotation: {x: 0, y: 0, z: 0.000020231519, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightArm
+      parentName: polo_RightShoulder
+      position: {x: 0.107072555, y: -0.00000006001947, z: 0}
+      rotation: {x: 0.0000059828244, y: 0.000017851613, z: -0.000029495768, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightForeArm
+      parentName: polo_RightArm
+      position: {x: 0.27305567, y: 0.0000050593703, z: 0.000009749005}
+      rotation: {x: -0.00000604206, y: -0.000018736817, z: 0.000009264253, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHand
+      parentName: polo_RightForeArm
+      position: {x: 0.26696965, y: 4.3200998e-14, z: -0.00000047258007}
+      rotation: {x: 0, y: 0.00000088508204, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandIndex1
+      parentName: polo_RightHand
+      position: {x: 0.0882167, y: 0.0019973712, z: 0.03472443}
+      rotation: {x: 0, y: 0.01745297, z: -0, w: 0.9998477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandIndex2
+      parentName: polo_RightHandIndex1
+      position: {x: 0.042253256, y: 1.7566293e-10, z: 0.0000011482348}
+      rotation: {x: 5.913297e-23, y: -0.01745297, z: -3.3876158e-21, w: 0.9998477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandIndex3
+      parentName: polo_RightHandIndex2
+      position: {x: 0.026523208, y: 1.10335345e-10, z: -0.00092552183}
+      rotation: {x: -1.3009491e-30, y: -1.0408341e-17, z: -3.3881318e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandIndex4
+      parentName: polo_RightHandIndex3
+      position: {x: 0.019570312, y: 8.141114e-11, z: -0.00068290235}
+      rotation: {x: -2.3509887e-38, y: 0, z: -3.3881318e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandMiddle1
+      parentName: polo_RightHand
+      position: {x: 0.088097684, y: 0.0050090007, z: 0.0130545795}
+      rotation: {x: 0, y: 0.01745297, z: -0, w: 0.9998477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandMiddle2
+      parentName: polo_RightHandMiddle1
+      position: {x: 0.04863241, y: 2.0218437e-10, z: 0.0000013164486}
+      rotation: {x: 5.913297e-23, y: -0.01745297, z: -3.3876158e-21, w: 0.9998477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandMiddle3
+      parentName: polo_RightHandMiddle2
+      position: {x: 0.027635574, y: 1.149624e-10, z: -0.0009643364}
+      rotation: {x: -1.3009491e-30, y: -1.0408341e-17, z: -3.3881318e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandMiddle4
+      parentName: polo_RightHandMiddle3
+      position: {x: 0.020044098, y: 8.3381906e-11, z: -0.0006994337}
+      rotation: {x: -1.1754944e-38, y: 3.469447e-18, z: -3.3881318e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandPinky1
+      parentName: polo_RightHand
+      position: {x: 0.08882492, y: -0.003130185, z: -0.024895728}
+      rotation: {x: 0.00000018900805, y: 0.01745297, z: -0.000010827914, w: 0.9998477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandPinky2
+      parentName: polo_RightHandPinky1
+      position: {x: 0.03047798, y: -0.00000010308782, z: 0.0000008238568}
+      rotation: {x: 0.00000006216556, y: -0.01745297, z: 0.0000060367784, w: 0.9998477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandPinky3
+      parentName: polo_RightHandPinky2
+      position: {x: 0.019757003, y: -0.00000026845112, z: -0.0006894135}
+      rotation: {x: 4.0705756e-18, y: -2.0816682e-17, z: -1.1655172e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandPinky4
+      parentName: polo_RightHandPinky3
+      position: {x: 0.016676255, y: -0.0000004505589, z: -0.000581913}
+      rotation: {x: -1.3860106e-18, y: -3.469447e-18, z: 3.968857e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandRing1
+      parentName: polo_RightHand
+      position: {x: 0.08893829, y: 0.0037992867, z: -0.007923764}
+      rotation: {x: 0, y: 0.01745297, z: -0, w: 0.9998477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandRing2
+      parentName: polo_RightHandRing1
+      position: {x: 0.04537756, y: 1.8865222e-10, z: 0.0000012312381}
+      rotation: {x: 5.913297e-23, y: -0.017452968, z: -3.3876158e-21, w: 0.9998477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandRing3
+      parentName: polo_RightHandRing2
+      position: {x: 0.023031235, y: 9.5808445e-11, z: -0.0008036702}
+      rotation: {x: -1.3009491e-30, y: 0, z: -3.3881318e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandRing4
+      parentName: polo_RightHandRing3
+      position: {x: 0.019221801, y: 7.9961066e-11, z: -0.0006707381}
+      rotation: {x: -2.3509887e-38, y: 0, z: -3.3881318e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandThumb1
+      parentName: polo_RightHand
+      position: {x: 0.04348381, y: -0.00798493, z: 0.042828117}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandThumb2
+      parentName: polo_RightHandThumb1
+      position: {x: 0.025125274, y: -0.0053610234, z: 0.0070767584}
+      rotation: {x: 0, y: 0, z: 0.000005254192, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandThumb3
+      parentName: polo_RightHandThumb2
+      position: {x: 0.025415953, y: 0.000000037989302, z: 0.0008882093}
+      rotation: {x: 0, y: -0, z: -0.0000070919536, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polo_RightHandThumb4
+      parentName: polo_RightHandThumb3
+      position: {x: 0.02665123, y: 0.0000002504341, z: 0.00093137263}
+      rotation: {x: 0, y: 0, z: 0.0000018377622, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
