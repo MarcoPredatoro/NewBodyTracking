@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 1153689834}
   - component: {fileID: 1153689833}
   - component: {fileID: 1153689832}
+  - component: {fileID: 1153689836}
   m_Layer: 0
   m_Name: networking
   m_TagString: Untagged
@@ -622,7 +623,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153689831}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c284d9772f27e5d4b8a72921679937c0, type: 3}
   m_Name: 
@@ -642,6 +643,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1153689836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153689831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfde48e557d9b944bb94564486833ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1661018069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -717,6 +730,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bbc87427f920af448f2f0bb11095f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1812625000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2450703715360283406, guid: d3d4eb67597bcbd48a9d9fd16e7a0218,
+    type: 3}
+  m_PrefabInstance: {fileID: 2450703715296887886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2119003114
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,18 +919,18 @@ PrefabInstance:
     - target: {fileID: 2450703715360283403, guid: d3d4eb67597bcbd48a9d9fd16e7a0218,
         type: 3}
       propertyPath: observableSearch
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2450703715360283403, guid: d3d4eb67597bcbd48a9d9fd16e7a0218,
         type: 3}
       propertyPath: ObservedComponents.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2450703715360283403, guid: d3d4eb67597bcbd48a9d9fd16e7a0218,
         type: 3}
       propertyPath: ObservedComponents.Array.data[2]
       value: 
-      objectReference: {fileID: 2450703715296887887}
+      objectReference: {fileID: 0}
     - target: {fileID: 2450703715360283404, guid: d3d4eb67597bcbd48a9d9fd16e7a0218,
         type: 3}
       propertyPath: m_Enabled
@@ -937,20 +956,13 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2450703715360283407, guid: d3d4eb67597bcbd48a9d9fd16e7a0218, type: 3}
+    - {fileID: 2450703715360283398, guid: d3d4eb67597bcbd48a9d9fd16e7a0218, type: 3}
+    - {fileID: 2450703715360283399, guid: d3d4eb67597bcbd48a9d9fd16e7a0218, type: 3}
+    - {fileID: 2450703715360283404, guid: d3d4eb67597bcbd48a9d9fd16e7a0218, type: 3}
+    - {fileID: 2450703715360283405, guid: d3d4eb67597bcbd48a9d9fd16e7a0218, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d3d4eb67597bcbd48a9d9fd16e7a0218, type: 3}
---- !u!114 &2450703715296887887 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2450703715360283407, guid: d3d4eb67597bcbd48a9d9fd16e7a0218,
-    type: 3}
-  m_PrefabInstance: {fileID: 2450703715296887886}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1593c7054163ca7479959aea264e4d03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2450703715296887888 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2450703713681158432, guid: d3d4eb67597bcbd48a9d9fd16e7a0218,
@@ -996,3 +1008,16 @@ MonoBehaviour:
   sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2450703715296887899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812625000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93d4b5e474e24f48bcac7bf7fd9dc88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hipPosition: {x: 0, y: 0, z: 0}

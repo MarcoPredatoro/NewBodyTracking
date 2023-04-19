@@ -8,7 +8,7 @@ public class NetworkPlayerSpawn : MonoBehaviourPunCallbacks
 {
 
   private GameObject spawnedPlayerPrefab;
-   private GameObject spawnedPlayerPrefab2;
+  private GameObject spawnedPlayerPrefab2;
 
   public override void OnJoinedRoom()
   {
