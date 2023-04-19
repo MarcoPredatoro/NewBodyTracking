@@ -25,20 +25,27 @@ public class main : MonoBehaviour
     {
         m_skeletalTrackingProvider = new SkeletalTrackingProvider(0);
         m_skeletalTrackingProvider1 = new SkeletalTrackingProvider(1);
-        
+
     }
 
-    void Update() {
-        
-        if (m_skeletalTrackingProvider.IsRunning && m_skeletalTrackingProvider1.IsRunning) {
-            if (renderMergedSkeletons) {
-                mergeBodies.renderSkeletons(m_skeletalTrackingProvider, m_skeletalTrackingProvider1 );
-            } else {
-                mergeBodies.renderBothSkeletons(m_skeletalTrackingProvider, m_skeletalTrackingProvider1 );
+    void Update()
+    {
+
+        if (m_skeletalTrackingProvider.IsRunning && m_skeletalTrackingProvider1.IsRunning)
+        {
+            if (renderMergedSkeletons)
+            {
+                mergeBodies.renderSkeletons(m_skeletalTrackingProvider, m_skeletalTrackingProvider1);
+            }
+            else
+            {
+                mergeBodies.renderBothSkeletons(m_skeletalTrackingProvider, m_skeletalTrackingProvider1);
             }
         }
-        
+
     }
+
+
 
     void OnApplicationQuit()
     {
@@ -46,19 +53,35 @@ public class main : MonoBehaviour
         {
             m_skeletalTrackingProvider.Dispose();
         }
-        if (m_skeletalTrackingProvider1 != null){
+        if (m_skeletalTrackingProvider1 != null)
+        {
             m_skeletalTrackingProvider1.Dispose();
         }
     }
 
-    public SkeletalTrackingProvider GetSkeletalTrackingProvider(int i){
-        if(i == 0 ){
+    public SkeletalTrackingProvider GetSkeletalTrackingProvider(int i)
+    {
+        if (i == 0)
+        {
             return m_skeletalTrackingProvider;
-        } else if (i == 1) {
+        }
+        else if (i == 1)
+        {
             return m_skeletalTrackingProvider1;
         }
         return m_skeletalTrackingProvider;
     }
+
+
+    public void StartGame()
+    {
+        GameObject.Find("networking").GetComponent<EventManager>().ResetPoints();
+        GetComponent<Points>().resetPoints();
+        GameObject.Find("Timer").GetComponent<Timer>().ResetTimer();
+        GameObject.Find("networking").GetComponent<EventManager>().SendGameStart();
+
+
+    }
+
+
 }
-
-

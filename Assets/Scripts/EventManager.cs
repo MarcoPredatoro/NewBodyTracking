@@ -14,7 +14,9 @@ public class EventManager : MonoBehaviour
     private const byte RESET_POINTS_EVENT = 3;
     private const byte SEQUENCE_GENERATED_EVENT = 4;
     private const byte SEQUENCE_COMPLETED_EVENT = 5;
-    private const byte GAME_OVER_EVENT = 7;
+    private const byte EGG_TIMER_EVENT = 6;
+    private const byte GAME_COMPLETE_EVENT = 7;
+    private const byte GAME_START = 8;
     public Points points;
 
     public void IncrementPointsByRFID(int numberOfPoints)
@@ -31,6 +33,22 @@ public class EventManager : MonoBehaviour
         RaiseEventOptions options = RaiseEventOptions.Default;
         options.Receivers = ReceiverGroup.All;
         PhotonNetwork.RaiseEvent(MARCO_STAB_EVENT, 30, options, SendOptions.SendReliable);
+    }
+
+    public void SendGameOver()
+    {
+        Debug.Log("sending game over");
+        RaiseEventOptions options = RaiseEventOptions.Default;
+        options.Receivers = ReceiverGroup.All;
+        PhotonNetwork.RaiseEvent(GAME_COMPLETE_EVENT, 30, options, SendOptions.SendReliable);
+    }
+
+    public void SendGameStart()
+    {
+        Debug.Log("sending game start");
+        RaiseEventOptions options = RaiseEventOptions.Default;
+        options.Receivers = ReceiverGroup.All;
+        PhotonNetwork.RaiseEvent(GAME_START, 30, options, SendOptions.SendReliable);
     }
 
     public void ResetPoints()
@@ -103,10 +121,19 @@ public class EventManager : MonoBehaviour
             points.updatePoints(20);
             GenerateSequence(4, 4);
         }
-        else if (obj.Code == GAME_OVER_EVENT)
+        else if (obj.Code == GAME_COMPLETE_EVENT)
         {
             Debug.Log("GAME OVER");
             ResetPoints();
+        }
+        else if (obj.Code == EGG_TIMER_EVENT)
+
+        {
+            // open the box and generate a new sequence?
+            string eggCode = (string)obj.CustomData;
+            Debug.Log("eggCode recieved: " + obj.CustomData);
+            GameObject.Find("Main").GetComponent<RFID>().UpdateEggStatus(eggCode);
+
         }
     }
 }
