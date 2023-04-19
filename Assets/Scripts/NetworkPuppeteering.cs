@@ -64,6 +64,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
         
         PuppetAnimator = GetComponent<Animator>();
         pv = GetComponent<PhotonView>();
+        kinectRotationsMap = new Dictionary<int, float[]>();
 
         if (pv.IsMine)
         {
@@ -131,7 +132,15 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     {
         kinectRotationsMap = mergebodies.rotationsMap;
         hipPosition = mergebodies.pelvisPosition;
-        mapBonesFromPhoton();
+        Debug.Log(hipPosition.ToString());
+        if (kinectRotationsMap.Count > 0)
+        {
+            mapBonesFromPhoton();
+        }
+        else
+        {
+            Debug.Log("rotation map is empty");
+        }
     }
 
     private void mapBonesFromKinect()
@@ -203,7 +212,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     { 
         if (stream.IsWriting)
         {
-            Debug.Log("hips: " + hipPosition.ToString());
+            //Debug.Log("hips: " + hipPosition.ToString());
             stream.SendNext(new object[] { kinectRotationsMap, hipPosition });
         }
         else if (stream.IsReading)
@@ -214,7 +223,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
             // wait
             // Quaternion -> object casts are valid and exist
             hipPosition = (Vector3)data[1];
-            Debug.Log("received hips: " + data[1].ToString());
+            //Debug.Log("received hips: " + data[1].ToString());
         }
     }
 }
