@@ -7,7 +7,7 @@ public class Points : MonoBehaviour
 {
     // Start is called before the first frame update
     public float threshold = 50;
-    public int points;
+    public float points;
     public Text pointsText;
     public Material pointsBar;
     public Image pointer;
@@ -27,17 +27,17 @@ public class Points : MonoBehaviour
         updatePointsBar();
     }
 
-    public int getPoints() {
+    public float getPoints() {
         return points;
     }
-    public void updatePoints(int value) {
+    public void updatePoints(float value) {
         points += value;
         // pointsText.text = "Points: " + points.ToString();
         updatePointsBar();
     }
 
     private bool loseTimer = false;
-    public void losePoints(int value) {
+    public void losePoints(float value) {
         if (!loseTimer) {
             loseTimer = true;
             points -= value;

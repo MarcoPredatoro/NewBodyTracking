@@ -99,8 +99,8 @@ public class EventManager : MonoBehaviour
         }
         else if (obj.Code == MARCO_STAB_EVENT)
         {
-            int numberOfPoints = (int)obj.CustomData;
-            Debug.Log("stab received: " + obj.CustomData);
+            Debug.Log("stab received: " + obj.CustomData.ToString());
+            float numberOfPoints = float.Parse( obj.CustomData.ToString());
             points.updatePoints(-numberOfPoints);
         }
         else if (obj.Code == RESET_POINTS_EVENT)
@@ -120,9 +120,6 @@ public class EventManager : MonoBehaviour
             points.updatePoints(20);
             GenerateSequence(4, 4);
         }
-        else if (obj.Code == GAME_START)
-        {
-            
-        }
+
     }
 }

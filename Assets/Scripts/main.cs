@@ -66,6 +66,7 @@ public class main : MonoBehaviour
     public void StartGame() {
         GameObject.Find("networking").GetComponent<EventManager>().ResetPoints();
         GetComponent<Points>().resetPoints();
+        // GameObject.Find("EndScreen").SetActive(false);
         GameObject.Find("Timer").GetComponent<Timer>().ResetTimer();
         GameObject.Find("networking").GetComponent<EventManager>().SendGameStart();
 
