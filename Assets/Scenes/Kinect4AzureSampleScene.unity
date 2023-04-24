@@ -15191,7 +15191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mergeBodies: {fileID: 1427726838}
-  renderMergedSkeletons: 0
+  renderMergedSkeletons: 1
 --- !u!114 &522368196
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -51,10 +51,10 @@ public class MergeBodies : MonoBehaviour
                         // Check how close the bodies are together
                         if(GetXZDistance(location0[i].Item1, location1[j].Item1) < SYNC_EPSILON && !isUsed[i] && !isUsed[location0.Count + j]) {
                             // Add to the bodies array the tracker and the body location that is closest to it's respective camera
-                            var distance = Mathf.Min(location0[0].Item1.z, location1[0].Item2 );
+                            var distance = Mathf.Min(location0[i].Item1.z, location1[i].Item1.z );
                             var body = location0[0].Item2 > location1[0].Item2 ? new Tuple<int, int>(0, i) : new Tuple<int, int>(1, j);
                             
-                            if(bodies.Count == 0) {
+                            if(bodies.Count < 2) {
                                 bodies.Add(body);
                                 distances.Add(distance);
                             } else {
@@ -85,7 +85,7 @@ public class MergeBodies : MonoBehaviour
                             distance = location1[i - location0.Count].Item1.z;
                         }
 
-                        if(bodies.Count == 0) {
+                        if(bodies.Count < 2) {
                             bodies.Add(body);
                             distances.Add(distance);
                         } else {
