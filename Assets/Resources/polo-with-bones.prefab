@@ -6089,7 +6089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1593c7054163ca7479959aea264e4d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointBody: pointBody
+  poloIndex: 0
   hipPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2450703715377092441
 GameObject:

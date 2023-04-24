@@ -15191,7 +15191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mergeBodies: {fileID: 1427726838}
-  renderMergedSkeletons: 1
+  renderMergedSkeletons: 0
 --- !u!114 &522368196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42641,6 +42641,7 @@ MonoBehaviour:
   m_tracker_1: {fileID: 634478801}
   Y_180_FLIP: {x: 0, y: 0.70711, z: 0, w: 0.70711}
   pelvisPosition: {x: 0, y: 0, z: 0}
+  pelvisPosition1: {x: 0, y: 0, z: 0}
 --- !u!4 &1427726839
 Transform:
   m_ObjectHideFlags: 0

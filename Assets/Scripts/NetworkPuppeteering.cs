@@ -11,7 +11,8 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     // we will have to set all of these in Start
     TrackerHandler KinectDevice;
     Animator PuppetAnimator;
-    public string pointBody; // <--- you'll need this for multiple polos, maybe?
+    //public string pointBody; // <--- you'll need this for multiple polos, maybe?
+    public int poloIndex;
     GameObject RootPosition; // this is usually pelvis
     Transform CharacterRootTransform; // this is usually the transform of the gameobject the script is attached to
     PhotonView pv;
@@ -25,8 +26,8 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     // using mergebodies
     MergeBodies mergebodies;
 
-    private const float OffsetY = 0.9f ;
-    private const float OffsetZ = 0;
+    public const float OffsetY = 0.9f ;
+    public const float OffsetZ = 0;
     private Quaternion Y_90_ROT = new Quaternion(0.00000f, 0.70711f, 0.00000f, 0.70711f);
 
     private static HumanBodyBones MapKinectJoint(JointId joint)
@@ -69,7 +70,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
         if (pv.IsMine)
         {
             KinectDevice = GameObject.Find("Kinect4AzureTracker").GetComponent<TrackerHandler>();
-            RootPosition = GameObject.Find(pointBody + "/pelvis");
+            RootPosition = GameObject.Find("pointBody/pelvis");
             CharacterRootTransform = GetComponent<Transform>();
 
             mergebodies = GameObject.Find("MergedBodyTracker").GetComponent<MergeBodies>();
@@ -130,8 +131,16 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
 
     private void mapBonesFromMergeBodies()
     {
-        kinectRotationsMap = mergebodies.rotationsMap;
-        hipPosition = mergebodies.pelvisPosition;
+        if (poloIndex == 0)
+        {
+            kinectRotationsMap = mergebodies.rotationsMap;
+            hipPosition = mergebodies.pelvisPosition;
+        }
+        else
+        {
+            kinectRotationsMap = mergebodies.rotationsMap1;
+            hipPosition = mergebodies.pelvisPosition1;
+        }
         Debug.Log(hipPosition.ToString());
         if (kinectRotationsMap.Count > 0)
         {
@@ -195,7 +204,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
                 // HERE WE GO BOYS WE'RE DOING THE STUPID-ASS CONVERSION SHIT
                 float[] rot = kinectRotationsMap[j];
                 Quaternion rotato = new Quaternion(rot[0], rot[1], rot[2], rot[3]);
-                finalJoint.rotation = rotato;
+                finalJoint.rotation = Y_90_ROT * rotato;
 
                 if (j == 0)
                 {

@@ -19,6 +19,8 @@ public class MergeBodies : MonoBehaviour
     // animator stuff
     public Dictionary<int, float[]> rotationsMap = new Dictionary<int, float[]>();
     public Vector3 pelvisPosition;
+    public Dictionary<int, float[]> rotationsMap1 = new Dictionary<int, float[]>();
+    public Vector3 pelvisPosition1;
 
     public void renderSkeletons(SkeletalTrackingProvider m_skeletalTrackingProvider, SkeletalTrackingProvider m_skeletalTrackingProvider1) {
         var bodies = getBodies(m_skeletalTrackingProvider, m_skeletalTrackingProvider1);
@@ -136,17 +138,25 @@ public class MergeBodies : MonoBehaviour
             Quaternion jointRot = Y_180_FLIP * new Quaternion(skeleton.JointRotations[jointNum].X, skeleton.JointRotations[jointNum].Y,
                 skeleton.JointRotations[jointNum].Z, skeleton.JointRotations[jointNum].W) * Quaternion.Inverse(tracker.basisJointMap[(JointId)jointNum]);
 
-            float[] cursedQuaternion = new float[4] { jointRot.x, jointRot.y, jointRot.z, jointRot.w };
-            kinectRotations[jointNum] = cursedQuaternion;
-
-            if (jointNum == (int)JointId.Pelvis)
-            {
-                pelvisPosition = jointPos;
-            }
-
             // these are absolute body space because each joint has the body root for a parent in the scene graph
             transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).localPosition = jointPos;
             transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).localRotation = jointRot;
+            
+            if (jointNum == (int)JointId.Pelvis)
+            {
+                if (skeletonNumber == 0) {
+                    pelvisPosition = transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).position;
+                }
+                else {
+                    pelvisPosition1 = transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).position;
+                }
+                
+            }
+
+            Quaternion globalRot = transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).rotation;
+            float[] cursedQuaternion = new float[4] { globalRot.x, globalRot.y, globalRot.z, globalRot.w };
+            //float[] cursedQuaternion = new float[4] { jointRot.x, jointRot.y, jointRot.z, jointRot.w };
+            kinectRotations[jointNum] = cursedQuaternion;
 
             const int boneChildNum = 0;
             if (tracker.parentJointMap[(JointId)jointNum] != JointId.Head && tracker.parentJointMap[(JointId)jointNum] != JointId.Count)
@@ -165,7 +175,13 @@ public class MergeBodies : MonoBehaviour
                 transform.GetChild(skeletonNumber).GetChild(0).GetChild(jointNum).GetChild(boneChildNum).gameObject.SetActive(false);
             }
         }
-        rotationsMap = kinectRotations;
+        if (skeletonNumber == 0) {
+            rotationsMap = kinectRotations;
+        }
+        else {
+            rotationsMap1 = kinectRotations;
+        }
+
         Debug.Log("pelvis at: " + pelvisPosition.ToString());
     }
 
