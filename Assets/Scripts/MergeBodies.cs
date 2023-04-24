@@ -50,19 +50,7 @@ public class MergeBodies : MonoBehaviour
                             var distance = Mathf.Min(location0[i].Item2, location1[j].Item2 );
                             var body = location0[0].Item2 > location1[0].Item2 ? new Tuple<int, int>(0, i) : new Tuple<int, int>(1, j);
                             
-                            if(bodies.Count < 2) {
-                                bodies.Add(body);
-                                distances.Add(distance);
-                            } else {
-                                var count = bodies.Count;
-                                for(int k = 0; k < distances.Count; k++){
-                                    if (distance < distances[k]){
-                                        bodies.Insert(k, body);
-                                        distances.Insert(k, distance);
-                                        break;
-                                    }
-                                }
-                            }
+                            addBodyToRender(distance, body, ref distances, ref bodies);
 
                             isUsed[i] = true;
                             isUsed[location0.Count + j] = true;
@@ -82,18 +70,7 @@ public class MergeBodies : MonoBehaviour
                             distance = location1[i - location0.Count].Item2;
                         }
 
-                        if(bodies.Count < 2) {
-                            bodies.Add(body);
-                            distances.Add(distance);
-                        } else {
-                            for(int k = 0; k < distances.Count; k++){
-                                if (distance < distances[k]){
-                                    bodies.Insert(k, body);
-                                    distances.Insert(k, distance);
-                                    break;
-                                }
-                            }
-                        }
+                        addBodyToRender(distance, body, ref distances, ref bodies);
 
                     }
 
@@ -107,7 +84,7 @@ public class MergeBodies : MonoBehaviour
                         returnBodies.Add(new Tuple<Body, GameObject>(m_lastFrameData1.Bodies[bodies[i].Item2], m_tracker_1));
                     }
                 }
-                // Debug.Log(bodies.Count + " " + returnBodies.Count + " " + location0.Count + " "  + location1.Count);
+                Debug.Log(bodies.Count + " " + returnBodies.Count + " " + location0.Count + " "  + location1.Count);
             }
         }
         return returnBodies;
@@ -115,9 +92,7 @@ public class MergeBodies : MonoBehaviour
     
     private void renderSkeleton(Body skeleton, TrackerHandler tracker, Transform kinectTransform, int skeletonNumber)
     {
-        // m_tracker_0.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData0, 0);
-        // m_tracker_1.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData1, 0);
-
+        // Sets the transform of the merged point body to be that of the chosen calibrated camera
         transform.GetChild(skeletonNumber).position = kinectTransform.position;
         transform.GetChild(skeletonNumber).rotation = kinectTransform.rotation;
 
@@ -172,6 +147,24 @@ public class MergeBodies : MonoBehaviour
                 m_tracker_1.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData1, 1);
                 m_tracker_1.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData1, 2);
             }
+        }
+    }
+
+    // Inserts the body to the bodies array based on it's distance to it's closest camera
+    private void addBodyToRender(float distance, Tuple<int,int> body, ref List<float> distances, ref List<Tuple<int, int>> bodies ) {
+        bool added = false;
+
+        for(int k = 0; k < distances.Count; k++){
+            if (distance < distances[k]){
+                bodies.Insert(k, body);
+                distances.Insert(k, distance);
+                added = true;
+                break;
+            }
+        }
+        if (!added){
+            bodies.Add(body);
+            distances.Add(distance);
         }
     }
 
