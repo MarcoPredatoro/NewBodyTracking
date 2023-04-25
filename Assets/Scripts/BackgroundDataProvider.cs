@@ -10,6 +10,7 @@ public abstract class BackgroundDataProvider:IDisposable
     public bool IsRunning { get; set; } = false;
     private CancellationTokenSource _cancellationTokenSource;
     private CancellationToken _token;
+    
 
     public BackgroundDataProvider(int id)
     {

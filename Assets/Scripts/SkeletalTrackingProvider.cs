@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class SkeletalTrackingProvider : BackgroundDataProvider
 {
+    public bool hasFailed = false;
     bool readFirstFrame = false;
     TimeSpan initialTimestamp;
 
@@ -45,17 +46,6 @@ public class SkeletalTrackingProvider : BackgroundDataProvider
                 UnityEngine.Debug.Log("Open K4A device successful. id " + id + "sn:" + device.SerialNum);
 
                 deviceCalibration = device.GetCalibration();
-                // var extrinsics = deviceCalibration.DeviceExtrinsics;
-
-                // for (int i = 0; i < extrinsics.Length; i++){
-                //     Debug.Log("number = " + i);
-                //     float x = Mathf.Atan2(extrinsics[i].Rotation[7], extrinsics[i].Rotation[8]);
-                //     float y = -Mathf.Asin(extrinsics[i].Rotation[6]);
-                //     float z = Mathf.Atan2(extrinsics[i].Rotation[4] / (Mathf.Cos(x) + 0.0001f), extrinsics[i].Rotation[2] / (Mathf.Cos(x) + 0.001f));
-                //     Debug.Log(x + " " + y + " " + z);
-                    
-                //     Debug.Log("");
-                // }
 
                 device.StartImu();
                 using (Tracker tracker = Tracker.Create(deviceCalibration, new TrackerConfiguration() { ProcessingMode = TrackerProcessingMode.Gpu, SensorOrientation = SensorOrientation.Default }))
@@ -65,12 +55,6 @@ public class SkeletalTrackingProvider : BackgroundDataProvider
                     {
                         
                         imuSample = device.GetImuSample();
-                        
-
-                        // Debug.Log(imuSample[0] + " " + imuSample[1] + " " + imuSample[2]);
-                        // Debug.Log(imuSample[3] + " " + imuSample[4] + " " + imuSample[5]);
-                        // Debug.Log(imuSample[6] + " " + imuSample[7] + " " + imuSample[8] + "\n");
-                        
 
                         using (Capture sensorCapture = device.GetCapture())
                         {
@@ -150,6 +134,9 @@ public class SkeletalTrackingProvider : BackgroundDataProvider
         {
             Debug.Log($"catching exception for background thread {e.Message}");
             token.ThrowIfCancellationRequested();
+            if(e.Message == "K4A_RESULT_FAILED") {
+                hasFailed = true;
+            }
         }
     }
     

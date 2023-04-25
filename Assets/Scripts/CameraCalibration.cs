@@ -160,51 +160,16 @@ public class CameraCalibration : MonoBehaviour
             container1.transform.position = translation;
 
             Debug.Log(translation + " " + rotation);
+            // Turn on merged bodies and turn off normal containers
+            GameObject.Find("Main").GetComponent<main>().renderMergedSkeletons = true;
+            tracker.SetActive(false);
+            tracker1.SetActive(false);
         } else {
             Debug.Log("Camera Calibration failed");
         }
     } 
 
-    IEnumerator<WaitForSeconds> TestWaitTwoCameraCalibrate() {
-        Debug.Log("Starting Camera Calibration");
-        float timer = 0.5f;
-        bool success = true;
-        var m_skeletalTrackingProvider = main.GetComponent<main>().GetSkeletalTrackingProvider(0);
-        // var m_skeletalTrackingProvider1 = main.GetComponent<main>().GetSkeletalTrackingProvider(1);
-        
-        while (!(m_skeletalTrackingProvider.IsRunning)){
-            yield return new WaitForSeconds(timer);
-            timer += 0.25f;
-            if(timer > 60){
-                success = false;
-                break;
-            }
-        }
 
-        if (success) {
-            Debug.Log("Calibrating Cameras");  
-            Vector3 translation = new Vector3(0,0,0);
-            Vector3 rotation = new UnityEngine.Vector3(0,0,0);
-            for (var i = 0; i < noIterations; i++){
-                syncText.text = "" + i;
-                var bone_0 = firstPelvis.transform.position;
-                var bone_1 = secondPelvis.transform.position;
-                var rotation_0 = firstPelvis.transform.rotation.eulerAngles;
-                var rotation_1 = secondPelvis.transform.rotation.eulerAngles;
-
-                translation +=  bone_0 - bone_1;
-                rotation += rotation_0 - rotation_1;   
-                yield return new WaitForSeconds(0.05f);
-            }
-            translation /= noIterations;
-            rotation /= noIterations;
-
-            tracker.transform.rotation = Quaternion.Euler(rotation);
-            container.transform.position = new Vector3(translation.x, translation.y, translation.z);
-        } else {
-            Debug.Log("Camera Calibration failed");
-        }
-    } 
 
 }
 
