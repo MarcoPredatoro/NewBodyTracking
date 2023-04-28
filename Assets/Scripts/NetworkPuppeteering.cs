@@ -141,14 +141,14 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
             kinectRotationsMap = mergebodies.rotationsMap1;
             hipPosition = mergebodies.pelvisPosition1;
         }
-        Debug.Log(hipPosition.ToString());
+        //Debug.Log(hipPosition.ToString());
         if (kinectRotationsMap.Count > 0)
         {
             mapBonesFromPhoton();
         }
         else
         {
-            Debug.Log("rotation map is empty");
+            //Debug.Log("rotation map is empty");
         }
     }
 

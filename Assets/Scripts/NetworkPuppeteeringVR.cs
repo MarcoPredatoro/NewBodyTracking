@@ -90,6 +90,6 @@ public class NetworkPuppeteeringVR : MonoBehaviourPun, IPunObservable
         // wait
         // Quaternion -> object casts are valid and exist
         hipPosition = (Vector3)data[1];
-        Debug.Log("received hips: " + hipPosition.ToString());
+        //Debug.Log("received hips: " + hipPosition.ToString());
     }
 }

@@ -15231,6 +15231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7072440772e4d5644a6e478fcc4675d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noIterations: 125
+  waitTime: 0.01
   firstPelvis: {fileID: 2100511568}
   secondPelvis: {fileID: 2141759227}
   firstFoot: {fileID: 601284949}

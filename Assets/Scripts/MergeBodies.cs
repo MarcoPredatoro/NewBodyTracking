@@ -31,7 +31,8 @@ public class MergeBodies : MonoBehaviour
         
     }
 
-    private List<Tuple<Body, GameObject>> getBodies(SkeletalTrackingProvider m_skeletalTrackingProvider, SkeletalTrackingProvider m_skeletalTrackingProvider1) {
+    private List<Tuple<Body, GameObject>> getBodies(SkeletalTrackingProvider m_skeletalTrackingProvider, SkeletalTrackingProvider m_skeletalTrackingProvider1)
+    {
         List<Tuple<Body, GameObject>> returnBodies = new List<Tuple<Body, GameObject>>();
         if (m_skeletalTrackingProvider.GetCurrentFrameData(ref m_lastFrameData0) && m_skeletalTrackingProvider1.GetCurrentFrameData(ref m_lastFrameData1))
         // if the frame processing was successfull
@@ -40,84 +41,75 @@ public class MergeBodies : MonoBehaviour
             // if either camera has bodies within it
             {
                 // Calculate the location of the bodies in world space 
-                List<Tuple<Vector3,float>> location0 = m_tracker_0.GetComponent<TrackerHandler>().getLocations(m_lastFrameData0);
-                List<Tuple<Vector3,float>> location1 = m_tracker_1.GetComponent<TrackerHandler>().getLocations(m_lastFrameData1);
+                List<Tuple<Vector3, float>> location0 = m_tracker_0.GetComponent<TrackerHandler>().getLocations(m_lastFrameData0);
+                List<Tuple<Vector3, float>> location1 = m_tracker_1.GetComponent<TrackerHandler>().getLocations(m_lastFrameData1);
 
                 // the tuple is (camera, body index)                 
                 List<Tuple<int, int>> bodies = new List<Tuple<int, int>>();
                 List<float> distances = new List<float>();
                 List<bool> isUsed = new List<bool>(new bool[location0.Count + location1.Count]);
-                
-                for (int i = 0; i < location0.Count; i++){
-                    for (int j = 0; j < location1.Count; j++){
+
+                for (int i = 0; i < location0.Count; i++)
+                {
+                    for (int j = 0; j < location1.Count; j++)
+                    {
                         // Check how close the bodies are together
-                        if(GetXZDistance(location0[i].Item1, location1[j].Item1) < SYNC_EPSILON && !isUsed[i] && !isUsed[location0.Count + j]) {
+                        if (GetXZDistance(location0[i].Item1, location1[j].Item1) < SYNC_EPSILON && !isUsed[i] && !isUsed[location0.Count + j])
+                        {
+                            // chose the order to render the bodies based on the distance to the main camera
+                            var distance = location0[i].Item2;
                             // Add to the bodies array the tracker and the body location that is closest to it's respective camera
-                            var distance = Mathf.Min(location0[i].Item1.z, location1[i].Item1.z );
                             var body = location0[0].Item2 > location1[0].Item2 ? new Tuple<int, int>(0, i) : new Tuple<int, int>(1, j);
-                            
-                            if(bodies.Count < 2) {
-                                bodies.Add(body);
-                                distances.Add(distance);
-                            } else {
-                                for(int k = 0; k < distances.Count; k++){
-                                    if (distance < distances[k]){
-                                        bodies.Insert(k, body);
-                                        distances.Insert(k, distance);
-                                        break;
-                                    }
-                                }
-                            }
+
+                            addBodyToRender(distance, body, ref distances, ref bodies);
 
                             isUsed[i] = true;
                             isUsed[location0.Count + j] = true;
-                        } 
+                        }
                     }
                 }
-                for (int i = 0; i < isUsed.Count; i++){
+                for (int i = 0; i < isUsed.Count; i++)
+                {
                     // If the body hasn't been used then add it to the array aswell
-                    if (!isUsed[i]){
+                    if (!isUsed[i])
+                    {
                         Tuple<int, int> body;
-                        float distance; 
-                        if (i < location0.Count){
-                            body = new Tuple<int, int>(0,i);
-                            distance = location0[i].Item1.z;
-                        } else {
-                            body = new Tuple<int, int>(1,i - location0.Count);
-                            distance = location1[i - location0.Count].Item1.z;
+                        float distance;
+                        if (i < location0.Count)
+                        {
+                            body = new Tuple<int, int>(0, i);
+                            distance = location0[i].Item2;
+                        }
+                        else
+                        {
+                            body = new Tuple<int, int>(1, i - location0.Count);
+                            distance = location1[i - location0.Count].Item2;
                         }
 
-                        if(bodies.Count < 2) {
-                            bodies.Add(body);
-                            distances.Add(distance);
-                        } else {
-                            for(int k = 0; k < distances.Count; k++){
-                                if (distance < distances[k]){
-                                    bodies.Insert(k, body);
-                                    distances.Insert(k, distance);
-                                    break;
-                                }
-                            }
-                        }
+                        addBodyToRender(distance, body, ref distances, ref bodies);
 
                     }
 
                 }
 
-                for (int i = 0; i < (int)Mathf.Min(2, bodies.Count); i++){
+                for (int i = 0; i < (int)Mathf.Min(2, bodies.Count); i++)
+                {
                     // Add all the bodies to the return bodies to be rendered
-                    if(bodies[i].Item1 == 0) {
+                    if (bodies[i].Item1 == 0)
+                    {
                         returnBodies.Add(new Tuple<Body, GameObject>(m_lastFrameData0.Bodies[bodies[i].Item2], m_tracker_0));
-                    } else {
+                    }
+                    else
+                    {
                         returnBodies.Add(new Tuple<Body, GameObject>(m_lastFrameData1.Bodies[bodies[i].Item2], m_tracker_1));
                     }
                 }
-                Debug.Log(bodies.Count + " " + returnBodies.Count);
+                // Debug.Log(bodies.Count + " " + returnBodies.Count + " " + location0.Count + " "  + location1.Count);
             }
         }
         return returnBodies;
     }
-    
+
     private void renderSkeleton(Body skeleton, TrackerHandler tracker, Transform kinectTransform, int skeletonNumber)
     {
         // m_tracker_0.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData0, 0);
@@ -182,7 +174,7 @@ public class MergeBodies : MonoBehaviour
             rotationsMap1 = kinectRotations;
         }
 
-        Debug.Log("pelvis at: " + pelvisPosition.ToString());
+        //Debug.Log("pelvis at: " + pelvisPosition.ToString());
     }
 
     public void renderBothSkeletons(SkeletalTrackingProvider m_skeletalTrackingProvider, SkeletalTrackingProvider m_skeletalTrackingProvider1) {
@@ -210,5 +202,27 @@ public class MergeBodies : MonoBehaviour
     private float GetXZDistance(Vector3 v1, Vector3 v2) {
         Vector3 vector = v1 - v2;
         return Mathf.Abs( Mathf.Sqrt( vector.x * vector.x + vector.z * vector.z ));
+    }
+
+    // Inserts the body to the bodies array based on it's distance to it's closest camera
+    private void addBodyToRender(float distance, Tuple<int, int> body, ref List<float> distances, ref List<Tuple<int, int>> bodies)
+    {
+        bool added = false;
+
+        for (int k = 0; k < distances.Count; k++)
+        {
+            if (distance < distances[k])
+            {
+                bodies.Insert(k, body);
+                distances.Insert(k, distance);
+                added = true;
+                break;
+            }
+        }
+        if (!added)
+        {
+            bodies.Add(body);
+            distances.Add(distance);
+        }
     }
 }
