@@ -24,13 +24,13 @@ public class main : MonoBehaviour
     void Start()
     {
         m_skeletalTrackingProvider = new SkeletalTrackingProvider(0);
-        m_skeletalTrackingProvider = new SkeletalTrackingProvider(1);
+        m_skeletalTrackingProvider1 = new SkeletalTrackingProvider(1);
         // StartCoroutine(WaitTwoCameraConnection());
         
     }
 
     void Update() {
-        if (!(m_skeletalTrackingProvider == null || m_skeletalTrackingProvider1 == null)) {
+        if ((m_skeletalTrackingProvider != null || m_skeletalTrackingProvider1 != null)) {
             if (m_skeletalTrackingProvider.IsRunning && m_skeletalTrackingProvider1.IsRunning) {
                 if (renderMergedSkeletons) {
                     mergeBodies.renderSkeletons(m_skeletalTrackingProvider, m_skeletalTrackingProvider1 );
@@ -70,9 +70,7 @@ public class main : MonoBehaviour
         GetComponent<Points>().resetPoints();
         // GameObject.Find("EndScreen").SetActive(false);
         GameObject.Find("Timer").GetComponent<Timer>().ResetTimer();
-        GameObject.Find("networking").GetComponent<EventManager>().SendGameStart();
-
-        
+        GameObject.Find("networking").GetComponent<EventManager>().SendGameStart(); 
     }
     IEnumerator<WaitForSeconds> WaitTwoCameraConnection() {
         Debug.Log("Attempting to Connect to Cameras");
