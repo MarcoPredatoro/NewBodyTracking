@@ -22,8 +22,8 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
     [SerializeField]
     Vector3 hipPosition;
 
-    private const float OffsetY = 0.9f ;
-    private const float OffsetZ = 0;
+    float OffsetY = 1f ;
+    float OffsetZ = 0;
     private Quaternion Y_90_ROT = new Quaternion(0.00000f, 0.70711f, 0.00000f, 0.70711f);
 
     private static HumanBodyBones MapKinectJoint(JointId joint)
