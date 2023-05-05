@@ -127,6 +127,7 @@ public class NetworkPuppeteering : MonoBehaviourPun, IPunObservable
         {
             mapBonesFromPhoton();
         }
+        transform.position = hipPosition;
     }
 
     private void mapBonesFromMergeBodies()
