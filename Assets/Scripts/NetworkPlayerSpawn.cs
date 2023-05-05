@@ -15,8 +15,8 @@ public class NetworkPlayerSpawn : MonoBehaviourPunCallbacks
     base.OnJoinedRoom();
     spawnedPlayerPrefab = PhotonNetwork.Instantiate("polo-with-bones", transform.position, transform.rotation);
     Debug.Log("Player spawned");
-    spawnedPlayerPrefab2 = PhotonNetwork.Instantiate("polo-with-bones-2", transform.position, transform.rotation);
-    Debug.Log("Player spawned2");
+    //spawnedPlayerPrefab2 = PhotonNetwork.Instantiate("polo-with-bones-2", transform.position, transform.rotation);
+    //Debug.Log("Player spawned2");
   }
 
   public override void OnLeftRoom()

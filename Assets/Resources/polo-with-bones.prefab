@@ -766,7 +766,7 @@ Transform:
   m_GameObject: {fileID: 2450703713695945189}
   m_LocalRotation: {x: -0.0000052231467, y: 0.00000045696635, z: 0.08715578, w: 0.9961947}
   m_LocalPosition: {x: 0.005692815, y: 0.017820068, z: 0.0000002528976}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 100, y: 100, z: 110}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2450703714650719008}
@@ -2503,7 +2503,7 @@ Transform:
   m_GameObject: {fileID: 2450703714254056166}
   m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 90, y: 90, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2450703714650719008}
@@ -5562,12 +5562,12 @@ Transform:
   m_GameObject: {fileID: 2450703715258659335}
   m_LocalRotation: {x: -0.0000052231467, y: -0.00000045696635, z: -0.08715578, w: 0.9961947}
   m_LocalPosition: {x: -0.005692815, y: 0.017820068, z: 0.00000025279348}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 100, y: 100, z: 110}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2450703714650719008}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.001, y: 0, z: 17.984}
 --- !u!33 &2450703715258659331
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5976,7 +5976,6 @@ GameObject:
   - component: {fileID: 2450703715360283400}
   - component: {fileID: 2450703715360283403}
   - component: {fileID: 2450703715360283402}
-  - component: {fileID: 2450703715360283404}
   - component: {fileID: 2450703715360283407}
   m_Layer: 0
   m_Name: polo-with-bones
@@ -6063,20 +6062,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!136 &2450703715360283404
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2450703715360283406}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &2450703715360283407
 MonoBehaviour:
   m_ObjectHideFlags: 0
