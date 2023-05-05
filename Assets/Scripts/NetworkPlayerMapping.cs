@@ -12,26 +12,11 @@ public class NetworkPlayerMapping : MonoBehaviour
     // public GameObject cubePrefab ;
 
     // // Start is called before the first frame update
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "Marco(Clone)"){
-            // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
-            GameObject.Find("Main").GetComponent<main>().losePoints(10);
-        }
-        if (collision.gameObject.name == "LeftHand"){
-            // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
-            GameObject.Find("Main").GetComponent<main>().losePoints(10);
-        }
-        if (collision.gameObject.name == "RightHand"){
-            // Debug.Log("!!!!!!!!!!!!!!!!!!!!!!");
-            GameObject.Find("Main").GetComponent<main>().losePoints(10);
-        }
-    } 
     
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-        playerHead = GameObject.Find("Kinect4AzureTracker").GetComponentInChildren<Transform>().Find(pointBody).Find(bone);
+        playerHead = GameObject.Find("MergedBodyTracker").GetComponentInChildren<Transform>().Find(pointBody).Find("pointBody").Find(bone);
 
     }
 

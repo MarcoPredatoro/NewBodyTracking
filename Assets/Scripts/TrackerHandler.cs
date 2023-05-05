@@ -8,13 +8,12 @@ using Microsoft.Azure.Kinect.BodyTracking;
 public class TrackerHandler : MonoBehaviour
 {
     public Dictionary<JointId, JointId> parentJointMap;
-    Dictionary<JointId, Quaternion> basisJointMap;
+    public Dictionary<JointId, Quaternion> basisJointMap;
     public Quaternion[] absoluteJointRotations = new Quaternion[(int)JointId.Count];
     public bool drawSkeletons = true;
-    Quaternion Y_180_FLIP = new Quaternion(0.00000f, 0.70711f, 0.00000f, 0.70711f);
+    public Quaternion Y_180_FLIP = new Quaternion(0.00000f, 0.70711f, 0.00000f, 0.70711f);
 
-    public Vector3 cameraRotation;
-    private Quaternion rotation;
+    private const int PELVIS_BONE = 0;
 
 
     // Start is called before the first frame update
@@ -111,6 +110,14 @@ public class TrackerHandler : MonoBehaviour
         
     }
 
+    public void renderIthBody(BackgroundData trackerFrameData, int i){
+        if ((int)trackerFrameData.NumOfBodies > i){
+            // render the closest body
+            Body skeleton = trackerFrameData.Bodies[i];
+            renderSkeleton(skeleton, i);
+
+        }
+    }
     public void updateTracker(BackgroundData trackerFrameData, int i_closest){
         if ((int)trackerFrameData.NumOfBodies > i_closest){
             // Get a list of closest bodies
@@ -169,6 +176,22 @@ public class TrackerHandler : MonoBehaviour
             }
         }
         return retIndex;
+    }
+
+    public List<Tuple<Vector3,float>> getLocations(BackgroundData frameData) {
+        List<Tuple<Vector3,float>> list = new List<Tuple<Vector3,float>>();
+        for (int i = 0; i < (int)frameData.NumOfBodies; i++)
+        {
+
+            Vector3 jointPos = new Vector3(frameData.Bodies[i].JointPositions3D[PELVIS_BONE].X, -frameData.Bodies[i].JointPositions3D[PELVIS_BONE].Y, frameData.Bodies[i].JointPositions3D[PELVIS_BONE].Z);
+            Vector3 offsetPosition = transform.rotation * jointPos ;
+            Vector3 positionInTrackerRootSpace = transform.position + offsetPosition;
+            
+            // Get the world location of the joint and the distance from the camera
+            list.Add(new Tuple<Vector3,float>(positionInTrackerRootSpace, frameData.Bodies[i].JointPositions3D[PELVIS_BONE].Z));
+
+        }
+        return list;
     }
 
     private SortedList<float, int> findClosestTrackedBody(BackgroundData trackerFrameData)
