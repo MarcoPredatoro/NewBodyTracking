@@ -10,10 +10,13 @@ Install Azure development and Game Development with Unity
 
 Open the NewBodyTracking project in Unity.
 If prompted to "open in safe mode" press ignore
+
 Either:
+
 Open the Visual Studio Solution associated with this project.
 If there is no Visual Studio Solution yet you can make one by opening the Unity Editor
 and selecting one of the csharp files in the project and opening it for editing.
+
 Or:
 In the project tab under Assets > Scripts double click a file to open it in Visual Studio
 If it does not open in Visual Studio go to Edit > Preferences > External Tools > External Script Editor and click Visual Studio in the dropdown.
