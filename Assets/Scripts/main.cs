@@ -79,7 +79,7 @@ public class main : MonoBehaviour
         GetComponent<Points>().resetPoints();
         GameObject.Find("Timer").GetComponent<Timer>().ResetTimer();
         GameObject.Find("networking").GetComponent<EventManager>().SendGameStart();
-
+        GetComponent<AudioSource>().Play();
 
     }
 
