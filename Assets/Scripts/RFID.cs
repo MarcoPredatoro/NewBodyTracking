@@ -19,38 +19,49 @@ public class RFID : MonoBehaviour
 
     Dictionary<string, string> egg = new Dictionary<string, string>()
     {
-        {"Real1", "2860760324" },
-
-        {"Real2", "2860758788"},
-
-        {"Real3", "2860770052"},
-
-        {"Real4", "2860741636"},
-
-        {"Real5", "2860599812"},
-
-        {"Real6", "2860773124"},
+        {"Real1", "2860598276"},
+        {"Real2", "2860743172"},
+        {"Real3", "2860674820"},
+        {"Real4", "2860599812"},
+        {"Real5", "2860758788"},
+        {"Real6", "2860876548"},
+        {"Real7", "2860814852"},
+        {"Real8", "2860773124"},
+        {"Real9", "2860760324"},
+        {"Real10", "2860771588"},
+        {"Real11", "2860770052"},
+        {"Real12", "2860807940"},
+        {"Real13", "2860809988"},
+        {"Real14", "2860811780"},
+        {"Real15", "2860813316"},
 
     };
 
     Dictionary<string, bool> eggRfid = new Dictionary<string, bool>()
     {
         //Real eggs
-        {"2860760324",true},
-        {"2860758788",true},
-        {"2860770052",true},
-        {"2860741636",true},
-        {"2860599812",true},
-        {"2860773124",true},
+        {"2860598276", true},
+        {"2860743172", true},
+        {"2860674820", true},
+        {"2860599812", true},
+        {"2860758788", true},
+        {"2860876548", true},
+        {"2860814852", true},
+        {"2860773124", true},
+        {"2860760324", true},
+        { "2860771588", true},
+        {"2860770052", true},
+        {"2860807940", true},
+        {"2860809988", true},
+        {"2860811780", true},
+        {"2860813316", true},
+
         //Rotten eggs
-        {"2860598276",false},
-
-        {"2860674820",false},
-
-        {"2860743172",false},
-
-        {"2860771588",false},
-
+        {"2860879620", false},
+        {"2860878084", false},
+        {"2860741636", false},
+        {"2860875012", false},
+        {"2860806404", false},
     };
 
     public void UpdateEggStatus(string input)
@@ -92,81 +103,7 @@ public class RFID : MonoBehaviour
                 rfidUsed[0]++;
             }
         }
-        //// real eggs
-        //if (input.text == "2860601348" && rfidUsed[0] < totalNumber)
-        //{
-        //    // GetComponent<main>().losePoints(10);
-        //    GetComponent<EventManager>().IncrementPointsByRFID(20);
-        //    input.text = null;
-        //    // input.Select();
-        //    input.ActivateInputField();
-        //    rfidUsed[0]++;
-        //}
 
-        //else if (input.text == "2860743172" && rfidUsed[1] < totalNumber)
-        //{
-        //    // GetComponent<main>().updatePoints(20);
-        //    GetComponent<EventManager>().IncrementPointsByRFID(20);
-        //    input.text = null;
-        //    // input.Select();
-        //    input.ActivateInputField();
-        //    rfidUsed[1]++;
-        //}
-        //else if (input.text == "1513049860" && rfidUsed[2] < totalNumber)
-        //{
-        //    // GetComponent<main>().updatePoints(30);
-        //    GetComponent<EventManager>().IncrementPointsByRFID(20);
-        //    input.text = null;
-        //    // input.Select();
-        //    input.ActivateInputField();
-        //    rfidUsed[2]++;
-        //}
-        //else if (input.text == "2860674820" && rfidUsed[1] < totalNumber)
-        //{
-        //    // GetComponent<main>().updatePoints(20);
-        //    GetComponent<EventManager>().IncrementPointsByRFID(20);
-        //    input.text = null;
-        //    // input.Select();
-        //    input.ActivateInputField();
-        //    rfidUsed[1]++;
-        //}
-        //// fake eggs
-        //else if (input.text == "1437055369" && rfidUsed[2] < totalNumber)
-        //{
-        //    // GetComponent<main>().updatePoints(30);
-        //    GetComponent<EventManager>().IncrementPointsByRFID(-100);
-        //    input.text = null;
-        //    // input.Select();
-        //    input.ActivateInputField();
-        //    rfidUsed[2]++;
-        //}
-        //else if (input.text == "2860599812" && rfidUsed[1] < totalNumber)
-        //{
-        //    // GetComponent<main>().updatePoints(20);
-        //    GetComponent<EventManager>().IncrementPointsByRFID(-100);
-        //    input.text = null;
-        //    // input.Select();
-        //    input.ActivateInputField();
-        //    rfidUsed[1]++;
-        //}
-        //else if (input.text == "2860741636" && rfidUsed[2] < totalNumber)
-        //{
-        //    // GetComponent<main>().updatePoints(30);
-        //    GetComponent<EventManager>().IncrementPointsByRFID(-100);
-        //    input.text = null;
-        //    // input.Select();
-        //    input.ActivateInputField();
-        //    rfidUsed[2]++;
-        //}
-        //else if (input.text == "2860598276" && rfidUsed[2] < totalNumber)
-        //{
-        //    // GetComponent<main>().updatePoints(30);
-        //    GetComponent<EventManager>().IncrementPointsByRFID(-100);
-        //    input.text = null;
-        //    // input.Select();
-        //    input.ActivateInputField();
-        //    rfidUsed[2]++;
-        //}
         if (!input.isFocused && activate)
         {
             input.ActivateInputField();
