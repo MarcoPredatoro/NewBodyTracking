@@ -74,6 +74,8 @@ Click on the PointsBar material and apply the shader Unlit > PointsBar.
 
 Click on star sky material and drag and drop the space-galaxy-background.jpeg to the Sperical (HDR) parameter
 
+Click on the ClawMaterial material and drag and drop the scales texture into the square next to the albedo field.
+
 #### 5.2) Applied Reset Materials
 
 For the PointsBar material: In the scene view click Canvas > pointsImage, in its inspector drag and drop the PointsBar material to the materials parameter of the Image Component.
@@ -83,6 +85,8 @@ For the forest scene: Please click Assets > Model > forest, then open the materi
 ![image](ReadMeImages/FixForest.png)
 
 For the skybox: Click on Window > Rendering > Lighting then click on Environment and drag and drop the star sky material to the Skybox Material parameter
+
+For the Marco model, go into Assets > Resources > Marco. Drag the ClawMaterial onto the "arm" meshes under claw-left and claw-right.
 
 ### 6) Play
 
