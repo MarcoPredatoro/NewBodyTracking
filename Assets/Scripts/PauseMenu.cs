@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUi;
     public GameObject pointsUi;
+    public GameObject endScreen;
 
     void Start() {
         Unpause();
@@ -18,7 +19,11 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (isPaused) {
+            if (endScreen.activeInHierarchy)
+            {
+                endScreen.SetActive(false);
+            }
+            else if (isPaused) {
                 Unpause();
             } else {
                 Pause();

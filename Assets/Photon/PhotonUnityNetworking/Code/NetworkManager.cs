@@ -48,6 +48,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Joined Room");
         base.OnJoinedRoom();
+        Debug.Log("Current players:" + PhotonNetwork.CurrentRoom.PlayerCount);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

@@ -51,14 +51,14 @@ public class Timer : MonoBehaviour
 
     public void ResetTimer()
     {
-        time = 5 * 60;
+        time = 5 *60;
         StartTimer(true);
         gameOver.SetActive(false);
     }
 
     void EndGame()
     {
-        GameObject.Find("main").GetComponent<AudioSource>().Pause();
+        GameObject.Find("Main").GetComponent<AudioSource>().Pause();
         gameOver.SetActive(true);
         gameOver.GetComponentInChildren<Text>().text = "The Winner is " + (points.getPoints() > points.threshold ? "Marco" : "Polo");
         GameObject.Find("networking").GetComponent<EventManager>().SendGameOver();
