@@ -75,6 +75,7 @@ public class main : MonoBehaviour
 
     public void StartGame()
     {
+        GetComponent<RFID>().ResetEggs();
         GameObject.Find("networking").GetComponent<EventManager>().ResetPoints();
         GetComponent<Points>().resetPoints();
         GameObject.Find("Timer").GetComponent<Timer>().ResetTimer();

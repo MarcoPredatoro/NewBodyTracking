@@ -14,6 +14,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        PhotonNetwork.NickName = "Kinect bois";
         ConnecttoServer();
     }
 
@@ -51,7 +52,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log("New Player entered room");
+        Debug.Log("player joined: " + newPlayer.ToString());
         base.OnPlayerEnteredRoom(newPlayer);
         Debug.Log("resetting points");
         RaiseEventOptions options = RaiseEventOptions.Default;
@@ -64,5 +65,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Created Room");
     }
 
-   
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+        Debug.Log("player left:" + otherPlayer.ToString());
+    }
 }

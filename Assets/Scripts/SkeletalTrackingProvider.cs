@@ -58,7 +58,7 @@ public class SkeletalTrackingProvider : BackgroundDataProvider
                 // }
 
                 device.StartImu();
-                using (Tracker tracker = Tracker.Create(deviceCalibration, new TrackerConfiguration() { ProcessingMode = TrackerProcessingMode.Gpu, SensorOrientation = SensorOrientation.Default }))
+                using (Tracker tracker = Tracker.Create(deviceCalibration, new TrackerConfiguration() { ProcessingMode = TrackerProcessingMode.DirectML, SensorOrientation = SensorOrientation.Default })) //TrackerProcessingMode.Gpu
                 {
                     UnityEngine.Debug.Log("Body tracker created.");
                     while (!token.IsCancellationRequested)

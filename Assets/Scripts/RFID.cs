@@ -37,7 +37,19 @@ public class RFID : MonoBehaviour
 
     };
 
-    Dictionary<string, bool> eggRfid = new Dictionary<string, bool>()
+    Dictionary<string, bool> eggRfid;
+    public void UpdateEggStatus(string input)
+    {
+        string rfidCode = egg[input];
+        if (eggRfid.ContainsKey(rfidCode) && eggRfid[rfidCode])
+        {
+            eggRfid[rfidCode] = false;
+        }
+    }
+
+    public void ResetEggs()
+    {
+        eggRfid = new Dictionary<string, bool>()
     {
         //Real eggs
         {"2860598276", true},
@@ -63,14 +75,6 @@ public class RFID : MonoBehaviour
         {"2860875012", false},
         {"2860806404", false},
     };
-
-    public void UpdateEggStatus(string input)
-    {
-        string rfidCode = egg[input];
-        if (eggRfid.ContainsKey(rfidCode) && eggRfid[rfidCode])
-        {
-            eggRfid[rfidCode] = false;
-        }
     }
 
 
@@ -79,6 +83,7 @@ public class RFID : MonoBehaviour
         // input.Select();
         input.ActivateInputField();
         eventmanager = GameObject.Find("networking").GetComponent<EventManager>();
+        ResetEggs();
     }
     void Update()
     {
