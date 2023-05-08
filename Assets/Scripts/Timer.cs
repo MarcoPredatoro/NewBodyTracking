@@ -53,7 +53,7 @@ public class Timer : MonoBehaviour
 
     public void ResetTimer()
     {
-        time = 10;
+        time = 5 * 60;
         StartTimer(true);
         gameOver.SetActive(false);
     }
