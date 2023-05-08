@@ -92,7 +92,7 @@ public class RFID : MonoBehaviour
             if (eggRfid[input.text] == true)
             {
                 // GetComponent<main>().losePoints(10);
-                eventmanager.IncrementPointsByRFID(10);
+                eventmanager.IncrementPointsByRFID(16);
                 input.text = null;
                 // input.Select();
                 input.ActivateInputField();
@@ -101,7 +101,7 @@ public class RFID : MonoBehaviour
             else
             {
                 // GetComponent<main>().losePoints(10);
-                eventmanager.IncrementPointsByRFID(-30);
+                eventmanager.IncrementPointsByRFID(-31);
                 input.text = null;
                 // input.Select();
                 input.ActivateInputField();

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Points : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float threshold = 50;
+    public float threshold = 0;
     public int points;
     public Text pointsText;
     public Material pointsBar;

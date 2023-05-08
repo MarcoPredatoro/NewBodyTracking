@@ -10,6 +10,8 @@ public class Timer : MonoBehaviour
     private float time = 5 * 60;
     public GameObject gameOver;
     public Points points;
+    public AudioClip win;
+    public AudioClip lose;
 
     private bool startTimer = false;
     // Start is called before the first frame update
@@ -51,7 +53,7 @@ public class Timer : MonoBehaviour
 
     public void ResetTimer()
     {
-        time = 5 *60;
+        time = 10;
         StartTimer(true);
         gameOver.SetActive(false);
     }
@@ -60,7 +62,20 @@ public class Timer : MonoBehaviour
     {
         GameObject.Find("Main").GetComponent<AudioSource>().Pause();
         gameOver.SetActive(true);
-        gameOver.GetComponentInChildren<Text>().text = "The Winner is " + (points.getPoints() > points.threshold ? "Marco" : "Polo");
+        Debug.Log(points.getPoints());
+        if (points.getPoints() > points.threshold)
+        {
+            gameOver.GetComponentInChildren<Text>().text = "The Winner is Polo";
+            //GetComponentInChildren<AudioSource>().clip = win;
+            GetComponentInChildren<AudioSource>().PlayOneShot(win);
+        }
+        else
+        {
+            gameOver.GetComponentInChildren<Text>().text = "The Winner is Marco";
+            //GetComponentInChildren<AudioSource>().clip = lose;
+            GetComponentInChildren<AudioSource>().PlayOneShot(lose);
+        }
+        
         GameObject.Find("networking").GetComponent<EventManager>().SendGameOver();
     }
 }
